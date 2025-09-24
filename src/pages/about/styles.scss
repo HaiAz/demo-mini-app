@@ -1,0 +1,68 @@
+@import "styles/variables/colors";
+
+.container {
+  background-color: #f7f8fa;
+  height: 100vh;
+  padding: 15px;
+}
+
+.title {
+  color: $red;
+  font-size: 14px;
+}
+
+.content {
+  .package-summaries {
+    display: flex;
+    justify-content: space-between;
+
+    .package-summary-item {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border: 1px solid #d1d1d1;
+      border-radius: 8px;
+      color: #2c2f31;
+      padding: 7px 3px;
+
+      .package-info {
+        color: #2c2f31;
+
+        .package-label {
+          margin: 0;
+          margin-bottom: 5px;
+        }
+
+        .package-name {
+          margin: 0;
+          font-weight: 700;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .package-details {
+    background-color: #dee6ee;
+    border-radius: 16px 16px 0 0;
+    padding: 12px;
+    padding-bottom: 64px;
+    margin-top: 20px;
+
+    .package-details-section {
+      background-color: #fff;
+      border-radius: 8px;
+
+      .package-details-title {
+        margin: 0;
+        padding: 8px 20px;
+        text-align: center;
+      }
+
+      .package-details-content {
+        padding: 12px 18px 14px 12px;
+        border-top: 1px dashed #dee6ee;
+      }
+    }
+  }
+}
