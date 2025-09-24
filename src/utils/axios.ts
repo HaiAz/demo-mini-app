@@ -1,4 +1,4 @@
-import axios, { AxiosResponse, AxiosError } from "axios";
+import axios, { AxiosResponse } from "axios";
 
 interface IRequestParams {
   url: string;
@@ -196,12 +196,14 @@ export const deleteData = async <T = any>(
 // Export axios instance để sử dụng trực tiếp nếu cần
 export { axiosInstance };
 
-// Export default cho convenience
-export default {
+const axiosApi = {
   get,
   post,
   put,
   patch,
   delete: deleteData,
   instance: axiosInstance,
-};
+}
+
+// Export default cho convenience
+export default axiosApi;

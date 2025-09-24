@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { TextArea, Card, Space } from "antd-mobile"
+import { Space } from "antd-mobile"
 import { useCounterStore } from "store"
 import { EyeOutline } from "antd-mobile-icons"
 import { useNavigate } from "react-router-dom"
@@ -8,7 +8,6 @@ import ModalComp from "components/modal"
 import { get } from "utils/axios"
 
 export default function Home() {
-  const [value, setValue] = useState("")
   const { count, increase, decrease } = useCounterStore()
   const [users, setUsers] = useState<any>([])
   const navigate = useNavigate()
