@@ -1,6 +1,15 @@
 .home {
   .adm-jumbo-tabs {
-    padding: 16px;
+
+    .adm-jumbo-tabs-header {
+      position: fixed;
+      z-index: 999;
+      top: 76px;
+      left: 0;
+      background-color: white;
+      will-change: transform;
+      contain: paint
+    }
   }
 
   .promotion {

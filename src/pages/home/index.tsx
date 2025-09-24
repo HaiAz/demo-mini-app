@@ -28,6 +28,30 @@ const promotionCardData: PromotionCardType[] = [
     utilities: "TV360",
     cost: "75.000đ",
   },
+  {
+    title: "Gói 30 ngày 1",
+    promotionName: "5G150",
+    duration: "30 ngày",
+    data: "6GB/ ngày",
+    utilities: "TV360",
+    cost: "150.000đ",
+  },
+  {
+    title: "Gói 15 ngày 1",
+    promotionName: "5G135TN",
+    duration: "15 ngày",
+    data: "6GB/ ngày",
+    utilities: "TV360",
+    cost: "67.500đ",
+  },
+  {
+    title: "Gói 7 ngày 1",
+    promotionName: "5G150TN",
+    duration: "7 ngày",
+    data: "8GB/ ngày",
+    utilities: "TV360",
+    cost: "75.000đ",
+  },
 ]
 
 export default function Home() {
