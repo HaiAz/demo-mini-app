@@ -37,7 +37,7 @@ export default function Home() {
         <JumboTabs.Tab title="Gói cước 4G/5G" description="" key="1">
           <div className="promotion">
             {promotionCardData.map((card) => (
-              <PromotionCard {...card} />
+              <PromotionCard key={card.title} {...card} />
             ))}
           </div>
         </JumboTabs.Tab>
