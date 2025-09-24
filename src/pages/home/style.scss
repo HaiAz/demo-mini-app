@@ -1,3 +1,11 @@
 .home {
-  background-color: $red;
+  .adm-jumbo-tabs {
+    padding: 16px;
+  }
+
+  .promotion {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 }
