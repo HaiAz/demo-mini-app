@@ -3,6 +3,8 @@ import { Space } from "antd-mobile"
 import { useCounterStore } from "store"
 import { EyeOutline } from "antd-mobile-icons"
 import { useNavigate } from "react-router-dom"
+import { Skeleton } from "antd-mobile"
+
 import Button from "components/button"
 import ModalComp from "components/modal"
 import { get } from "utils/axios"
@@ -10,18 +12,23 @@ import { get } from "utils/axios"
 export default function Home() {
   const { count, increase, decrease } = useCounterStore()
   const [users, setUsers] = useState<any>([])
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true)
         const response = await get({ url: "/users" })
-        console.log("🚀 ~ fetchData ~ response:", response)
         if (response?.status === 200) {
           setUsers(response?.data)
+          setIsLoading(false)
         }
       } catch (error) {
-        console.log("🚀 ~ Home ~ error:", error)
+        console.log("🚀 ~ fetchData ~ error:", error)
+        setIsLoading(false)
+      } finally {
+        setIsLoading(false)
       }
     }
     fetchData()
@@ -48,7 +55,9 @@ export default function Home() {
 
       <div>
         <h2 className="text-body-jp-lg">User list</h2>
+
         {users &&
+          !isLoading &&
           users?.map((user: any) => (
             <div
               key={user?.id}
@@ -63,6 +72,8 @@ export default function Home() {
               <EyeOutline onClick={() => navigate(`/profile/${user?.id}`)} />
             </div>
           ))}
+
+        {isLoading && <Skeleton.Paragraph lineCount={5} animated />}
       </div>
     </div>
   )
