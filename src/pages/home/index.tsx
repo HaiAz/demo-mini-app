@@ -1,97 +1,59 @@
-import { useEffect, useState } from "react";
-import { Space } from "antd-mobile";
-import { useCounterStore } from "store";
-import { EyeOutline } from "antd-mobile-icons";
-import { useNavigate } from "react-router-dom";
-import { Skeleton } from "antd-mobile";
+import { JumboTabs } from "antd-mobile"
+import "./style.scss"
+import { type PromotionCard as PromotionCardType } from "types/promotion-card"
+import PromotionCard from "components/promotion-card"
 
-import Button from "components/button";
-import ModalComp from "components/modal";
-import { get } from "utils/axios";
-import SearchInput from "components/search-input";
+const promotionCardData: PromotionCardType[] = [
+  {
+    title: "Gói 30 ngày",
+    promotionName: "5G150",
+    duration: "30 ngày",
+    data: "6GB/ ngày",
+    utilities: "TV360",
+    cost: "150.000đ",
+  },
+  {
+    title: "Gói 15 ngày",
+    promotionName: "5G135TN",
+    duration: "15 ngày",
+    data: "6GB/ ngày",
+    utilities: "TV360",
+    cost: "67.500đ",
+  },
+  {
+    title: "Gói 7 ngày",
+    promotionName: "5G150TN",
+    duration: "7 ngày",
+    data: "8GB/ ngày",
+    utilities: "TV360",
+    cost: "75.000đ",
+  },
+]
 
 export default function Home() {
-  const { count, increase, decrease } = useCounterStore();
-  const [users, setUsers] = useState<any>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await get({ url: "/users" });
-        if (response?.status === 200) {
-          setUsers(response?.data);
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.log("🚀 ~ fetchData ~ error:", error);
-        setIsLoading(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
   return (
-    <div className="home" style={{ marginInline: 50 }}>
-      <SearchInput showBorder={true} />
-      <Space
-        direction="vertical"
-        style={{ "--gap": "24px", marginBottom: "24px" }}
-      >
-        <Button
-          size="middle"
-          color="primary"
-          fill="solid"
-          text="Middle Button"
-          onClick={() => console.log(3)}
-        />
-      </Space>
-      <ModalComp />
-
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <Button
-          size="large"
-          color="warning"
-          fill="none"
-          text="-"
-          onClick={decrease}
-        />
-        <span style={{ fontSize: 20 }}>{count}</span>
-        <Button
-          size="large"
-          color="warning"
-          fill="none"
-          text="+"
-          onClick={increase}
-        />
-      </div>
-
-      <div>
-        <h2 className="text-body-jp-lg">User list</h2>
-
-        {users &&
-          !isLoading &&
-          users?.map((user: any) => (
-            <div
-              key={user?.id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                cursor: "pointer",
-              }}
-            >
-              <p>{user?.name}</p>
-              <EyeOutline onClick={() => navigate(`/profile/${user?.id}`)} />
-            </div>
-          ))}
-
-        {isLoading && <Skeleton.Paragraph lineCount={5} animated />}
-      </div>
+    <div className="home">
+      <JumboTabs defaultActiveKey="1">
+        <JumboTabs.Tab title="Gói cước 4G/5G" description="" key="1">
+          <div className="promotion">
+            {promotionCardData.map((card) => (
+              <PromotionCard key={card.title} {...card} />
+            ))}
+          </div>
+        </JumboTabs.Tab>
+        <JumboTabs.Tab title="Gói cước 5G" description="" key="2">
+          2
+        </JumboTabs.Tab>
+        <JumboTabs.Tab title="Gói cước Hot" description="" key="3">
+          3
+        </JumboTabs.Tab>
+        <JumboTabs.Tab title="Gói cước Dcom" description="" key="4">
+          4
+        </JumboTabs.Tab>
+        <JumboTabs.Tab title="Gói Roaming" description="" key="5">
+          5
+        </JumboTabs.Tab>
+      </JumboTabs>
     </div>
-  );
+  )
 }

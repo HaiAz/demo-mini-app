@@ -1,8 +1,7 @@
-import { SafeArea } from "antd-mobile";
-import FooterComp from "components/footer";
-import Header from "components/header";
-import { Outlet } from "react-router-dom";
-import "./style.scss";
+import { SafeArea } from "antd-mobile"
+import Header from "components/header"
+import { Outlet } from "react-router-dom"
+import "./style.scss"
 
 export default function MainLayout() {
   return (
@@ -13,7 +12,7 @@ export default function MainLayout() {
       <Header />
 
       {/* Content */}
-      <div className="main-content" style={{ flex: 1 }}>
+      <div className="main-content">
         <Outlet />
       </div>
 
@@ -22,5 +21,5 @@ export default function MainLayout() {
         <SafeArea position="bottom" />
       </div>
     </div>
-  );
+  )
 }
