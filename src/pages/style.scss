@@ -1,4 +1,4 @@
-@import 'styles/variables/colors';
+@import "styles/variables/colors";
 
 .main-layout {
   height: 100vh;
@@ -7,8 +7,8 @@
   overflow: hidden;
 
   .main-content {
-    min-height: calc(100vh - 159px);
-    max-height: calc(100vh - 159px);
+    min-height: calc(100vh - 110px);
+    max-height: calc(100vh - 110px);
     overflow-x: hidden;
     overflow-y: scroll;
   }
