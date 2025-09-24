@@ -8,6 +8,7 @@ import { Skeleton } from "antd-mobile";
 import Button from "components/button";
 import ModalComp from "components/modal";
 import { get } from "utils/axios";
+import SearchInput from "components/search-input";
 
 export default function Home() {
   const { count, increase, decrease } = useCounterStore();
@@ -36,6 +37,7 @@ export default function Home() {
 
   return (
     <div className="home" style={{ marginInline: 50 }}>
+      <SearchInput showBorder={true} />
       <Space
         direction="vertical"
         style={{ "--gap": "24px", marginBottom: "24px" }}
