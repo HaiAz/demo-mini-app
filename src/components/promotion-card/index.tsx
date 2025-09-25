@@ -30,8 +30,6 @@ export default function PromotionCard(props: PromotionCardType) {
             </Space>
           </div>
         }
-        // onBodyClick={onBodyClick}
-        // onHeaderClick={onHeaderClick}
         style={{ borderRadius: "16px" }}
       >
         <Space className="content" direction="horizontal" justify="between">
