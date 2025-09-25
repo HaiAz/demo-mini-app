@@ -1,8 +1,7 @@
-import About from "pages/about"
-import Home from "pages/home"
-import MainLayout from "pages/layout"
-import Profile from "pages/profile"
-import { MemoryRouter, Route, Routes } from "react-router-dom"
+import Home from "pages/home";
+import MainLayout from "pages/layout";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { routes } from "routes/routes";
 
 export default function App() {
   return (
@@ -10,10 +9,15 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="profile/:id" element={<Profile />} />
+          {routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<route.element />}
+            />
+          ))}
         </Route>
       </Routes>
     </MemoryRouter>
-  )
+  );
 }

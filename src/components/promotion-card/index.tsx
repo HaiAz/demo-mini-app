@@ -1,25 +1,25 @@
-import { type PromotionCard as PromotionCardType } from "types/promotion-card"
-import "./style.scss"
-import { Button, Card, Space } from "antd-mobile"
-import { useNavigate } from "react-router-dom"
-import ConfirmRegisterModal from "components/confirm-register-modal"
-import { useState } from "react"
+import { type PromotionCard as PromotionCardType } from "types/promotion-card";
+import "./style.scss";
+import { Button, Card, Space } from "antd-mobile";
+import { useNavigate } from "react-router-dom";
+import ConfirmRegisterModal from "components/confirm-register-modal";
+import { useState } from "react";
 
 export default function PromotionCard(props: PromotionCardType) {
-  const { title, promotionName, duration, data, cost, utilities } = props
-  const navigate = useNavigate()
+  const { title, promotionName, duration, data, cost, utilities } = props;
+  const navigate = useNavigate();
 
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalClose = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
   return (
     <div className="promotion-card">
       <div className="title">{title}</div>
 
       <Card
-        onClick={() => navigate("/about")}
+        onClick={() => navigate("/package-detail")}
         className="card"
         title={
           <div className="card-title" style={{ fontWeight: "normal" }}>
@@ -53,8 +53,8 @@ export default function PromotionCard(props: PromotionCardType) {
               color="primary"
               fill="outline"
               onClick={(e) => {
-                e.stopPropagation()
-                setIsModalOpen(true)
+                e.stopPropagation();
+                setIsModalOpen(true);
               }}
             >
               Đăng ký
@@ -63,7 +63,10 @@ export default function PromotionCard(props: PromotionCardType) {
         </Space>
       </Card>
 
-      <ConfirmRegisterModal isModalOpen={isModalOpen} onModalClose={handleModalClose} />
+      <ConfirmRegisterModal
+        isModalOpen={isModalOpen}
+        onModalClose={handleModalClose}
+      />
     </div>
-  )
+  );
 }
