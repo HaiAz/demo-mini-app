@@ -1,0 +1,15 @@
+@import "styles/variables/colors";
+
+.main-layout {
+  height: 100vh;
+  display: "flex";
+  flex-direction: "column";
+  overflow: hidden;
+
+  .main-content {
+    min-height: calc(100vh - 110px);
+    max-height: calc(100vh - 110px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}

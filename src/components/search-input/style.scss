@@ -1,0 +1,39 @@
+@use "styles/variables/colors";
+
+.search-input-custom {
+  --height: auto;
+  --padding-left: 12px;
+  --background: #fff;
+  --border-radius: 30px;
+
+  // input box chung
+  .adm-search-bar-input-box {
+    border: 0.5px solid #c4c4c4;
+
+    &-icon {
+      margin: 0.25rem 0 0 0.25rem;
+    }
+
+    &-input {
+      padding: 0.5rem;
+
+      .adm-input-element {
+        font: {
+          weight: 590;
+          size: 12px;
+        }
+        line-height: 13.71px;
+        letter-spacing: 0.0313rem;
+      }
+    }
+  }
+
+  // trạng thái border
+  &.showBorder .adm-search-bar-input-box {
+    border-color: #c4c4c4;
+  }
+
+  &.adm-search-bar-active .adm-search-bar-input-box {
+    border-color: $red;
+  }
+}
