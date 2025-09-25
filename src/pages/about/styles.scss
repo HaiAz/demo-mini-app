@@ -4,6 +4,22 @@
   background-color: #f7f8fa;
   height: 100vh;
   padding: 15px;
+
+  .register-btn {
+    width: 100% - 5%;
+    height: 36px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    background-color: $red;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    outline: none;
+    border: none;
+    color: white;
+  }
 }
 
 .title {
@@ -15,5 +31,24 @@
   .package-summaries {
     display: flex;
     justify-content: space-between;
+  }
+}
+
+.success-modal {
+  .adm-modal-content {
+    .adm-auto-center {
+      .adm-auto-center-content {
+        text-align: center;
+      }
+    }
+  }
+
+  .adm-space {
+    .adm-space-item {
+      .adm-button {
+        background-color: $red;
+        border: none;
+      }
+    }
   }
 }
