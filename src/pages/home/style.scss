@@ -8,7 +8,11 @@
       left: 0;
       background-color: white;
       will-change: transform;
-      contain: paint
+      contain: paint;
+
+      .adm-jumbo-tabs-tab-list {
+        max-width: 100vw;
+      }
     }
   }
 
