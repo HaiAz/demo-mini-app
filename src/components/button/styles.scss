@@ -1,0 +1,51 @@
+@import "styles/variables/colors";
+
+.btn-container {
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 10px;
+  padding: 8px;
+
+  cursor: pointer;
+}
+
+.btn {
+  &--full-width {
+    width: 100%;
+  }
+
+  &--solid {
+    background-color: $red;
+    border: none;
+    font-weight: 700;
+    font-size: 10px;
+    color: #ffffff;
+  }
+
+  &--outlined {
+    background-color: #ffffff;
+    border: 1px solid $red;
+    font-weight: 700;
+    font-size: 10px;
+    color: $red;
+  }
+
+  &--small {
+    padding: 10px 0;
+    line-height: 7px;
+  }
+
+  &--medium {
+    padding: 10px 0;
+    line-height: 9px;
+    font-size: 10.82px;
+  }
+
+  &--large {
+    padding: 10px 0;
+    line-height: 11px;
+  }
+}

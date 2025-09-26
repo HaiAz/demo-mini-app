@@ -1,11 +1,41 @@
-import { Button } from "antd-mobile"
-import { ButtonType } from "types/button"
+import "./styles.scss";
 
-export default function ButtonComp(props: ButtonType) {
-  const { size, color, fill, text, onClick } = props
-  return (
-    <Button size={size} color={color} fill={fill} onClick={() => onClick()}>
-      {text}
-    </Button>
-  )
+type ButtonVariantTypes = "solid" | "outlined";
+type ButtonSizeTypes = "small" | "medium" | "large";
+
+interface IButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
+  className?: string;
+  variant?: ButtonVariantTypes;
+  fullWidth?: boolean;
+  size?: ButtonSizeTypes;
 }
+
+const Button = ({
+  children,
+  onClick = () => {},
+  className = "",
+  variant = "solid",
+  fullWidth = true,
+  size = "medium",
+}: IButtonProps) => {
+  // Kết hợp className
+  const classNames = [
+    "btn-container",
+    className,
+    fullWidth ? "btn--full-width" : "",
+    `btn--${variant}`,
+    `btn--${size}`,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <button className={classNames} onClick={onClick}>
+      <span className="btn-content">{children}</span>
+    </button>
+  );
+};
+
+export default Button;

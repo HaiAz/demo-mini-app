@@ -2,6 +2,7 @@ import DataPackageCard from "components/data-package-card";
 
 import "./styles.scss";
 import PaymentCard from "components/payment-card";
+import Button from "components/button";
 
 const Test = () => {
   return (
@@ -28,20 +29,6 @@ const Test = () => {
         type="secondary"
         isPromo
         promoText="Khuyên dùng"
-      />
-
-      <PaymentCard
-        brandLogo="momo"
-        brandName="Ví Momo"
-        discount="2.5%"
-        voucher="Giảm 50k điện thoại, Internet cho bạn mới"
-      />
-
-      <PaymentCard
-        brandLogo="shopeePay"
-        brandName="Shopee pay"
-        discount="5.5%"
-        voucher="Bạn mới giảm 20%. Tặng quà đến 300K."
       />
     </div>
   );
