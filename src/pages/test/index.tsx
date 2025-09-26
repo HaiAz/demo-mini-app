@@ -2,10 +2,16 @@ import DataPackageCard from "components/data-package-card";
 
 import "./styles.scss";
 import PaymentCard from "components/payment-card";
+import Title from "components/title";
 
 const Test = () => {
   return (
     <div className="test-container">
+      <Title
+        titleName="Gói độc quyền"
+        showAll={true}
+        linkShowAll="/package-detail"
+      />
       <DataPackageCard
         packageName="5G29"
         duration="3 ngày"

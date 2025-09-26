@@ -1,0 +1,28 @@
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  .title-name {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    color: #000;
+  }
+  .show-all {
+    align-items: center;
+    gap: 0.25rem;
+    display: none;
+
+    &.is-show-all {
+      display: flex;
+    }
+
+    &-title {
+      font-size: 0.9375rem;
+      line-height: 1.375rem;
+      font-weight: 500;
+      color: #ee0033;
+    }
+  }
+}

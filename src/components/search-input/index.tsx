@@ -1,9 +1,9 @@
 import { SearchBar } from "antd-mobile";
 import "./style.scss";
 
-interface SearchInputProp {
+type SearchInputProp = {
   showBorder: boolean;
-}
+};
 
 const SearchInput = ({ showBorder }: SearchInputProp) => {
   return (
