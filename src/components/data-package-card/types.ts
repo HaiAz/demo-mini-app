@@ -12,4 +12,5 @@ export interface IDataPackageCard {
   promoText?: string;
   type?: DataPackageCardType;
   onClick?: () => void;
+  className?: string;
 }

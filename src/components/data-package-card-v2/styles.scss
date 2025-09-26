@@ -1,0 +1,123 @@
+@import "styles/variables/colors";
+
+.card-package-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  width: 334px;
+  padding: 9px 17px 9px 13px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  .content-left {
+    flex: 1;
+    .label {
+      display: flex;
+      column-gap: 5px;
+      align-items: center;
+      margin-bottom: 0.6875rem;
+
+      .tag {
+        display: flex;
+        background-color: $red;
+        border-radius: 0.625rem;
+        padding: 0.125rem 0.3125rem;
+
+        span {
+          font-weight: 700;
+          font-size: 0.625rem;
+          line-height: 0.6319rem;
+          color: #ffffff;
+        }
+      }
+
+      .view {
+        font-weight: 400;
+        font-size: 0.5625rem;
+        line-height: 1.25rem;
+        color: #a1a1a1;
+      }
+    }
+
+    .package-name {
+      font-weight: 700;
+      font-size: 1.125rem;
+      line-height: 1.125rem;
+      margin-bottom: 0.375rem;
+      color: #000000;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      row-gap: 0.375rem;
+
+      .feature-item:first-child {
+        .feature-text {
+          font-weight: 700;
+          font-size: 0.8125rem;
+          line-height: 100%;
+          color: #000000;
+        }
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        column-gap: 0.3125rem;
+        font-weight: 500;
+        font-size: 0.625rem;
+        color: #737373;
+
+        .diamond {
+          display: block;
+          width: 0.4375rem;
+          height: 0.4375rem;
+          background-color: #d9d9d9;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+
+  .dashed {
+    height: 6.25rem;
+    border-left: 1px dashed #e3e8ef;
+  }
+
+  .content-right {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-left: 1.25rem;
+    font-weight: 700;
+
+    .package-discount {
+      font-size: 0.75rem;
+      line-height: 0.75rem;
+      color: #7e7e7e;
+      text-decoration: line-through;
+      margin-bottom: 0.375rem;
+    }
+
+    .package-price {
+      font-size: 1rem;
+      line-height: 1.0625rem;
+      color: $red;
+    }
+
+    .package-expire {
+      font-size: 1rem;
+      line-height: 1.0625rem;
+      margin-bottom: 0.1875rem;
+      color: $red;
+      margin-bottom: 0.6875rem;
+    }
+
+    .buy-btn {
+      width: 5.375rem;
+    }
+  }
+}

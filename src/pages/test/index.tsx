@@ -4,7 +4,7 @@ import "./styles.scss";
 import PaymentCard from "components/payment-card";
 import Button from "components/button";
 import Title from "components/title";
-import ButtonSelect from "components/button-select";
+import DataPackageCardV2 from "components/data-package-card-v2";
 
 const Test = () => {
   return (
@@ -13,18 +13,6 @@ const Test = () => {
         titleName="Gói độc quyền"
         showAll={true}
         linkShowAll="/package-detail"
-      />
-      <ButtonSelect
-        buttonSelectName="Giá"
-        listOption={[
-          { label: "<10K", value: 1 },
-          { label: "10K - 50K", value: 2 },
-          { label: "50K - 100K", value: 3 },
-          { label: "100k - 500K", value: 4 },
-          { label: ">500k", value: 5 },
-        ]}
-        popupTitle="Chọn khoảng giá"
-        buttonConfirmName="Xác nhận"
       />
       <DataPackageCard
         packageName="5G29"
@@ -48,6 +36,18 @@ const Test = () => {
         type="secondary"
         isPromo
         promoText="Khuyên dùng"
+      />
+
+      <DataPackageCardV2
+        packageName="5G10MYT"
+        features={[
+          "4GB Data / ngày",
+          "2000p nội mạng , 10000p ngoại mạng",
+          "Miễn phí truy cập TV360",
+        ]}
+        discount="2.200.000"
+        price="1.620.000"
+        expired="360"
       />
     </div>
   );

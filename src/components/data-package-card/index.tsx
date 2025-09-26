@@ -16,10 +16,11 @@ const DataPackageCard = ({
   isPromo,
   promoText,
   type = "primary",
+  className = "",
   onClick = () => {},
 }: IDataPackageCard) => {
   return (
-    <div className={`card-package card-package--${type}`}>
+    <div className={`card-package card-package--${type} ${className}`}>
       <SuggestBadge
         isHot={isHot}
         isPromo={isPromo}
