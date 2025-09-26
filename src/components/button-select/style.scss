@@ -44,6 +44,9 @@
               height: 0.6875rem;
               width: 0.6875rem;
             }
+            > svg {
+              display: none;
+            }
           }
         }
         &-icon {
