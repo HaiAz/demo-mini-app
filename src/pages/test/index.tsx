@@ -16,8 +16,15 @@ const Test = () => {
       />
       <ButtonSelect
         buttonSelectName="Giá"
-        isActiveButtonSelect={true}
+        listOption={[
+          { label: "<10K", value: 1 },
+          { label: "10K - 50K", value: 2 },
+          { label: "50K - 100K", value: 3 },
+          { label: "100k - 500K", value: 4 },
+          { label: ">500k", value: 5 },
+        ]}
         popupTitle="Chọn khoảng giá"
+        buttonConfirmName="Xác nhận"
       />
       <DataPackageCard
         packageName="5G29"
