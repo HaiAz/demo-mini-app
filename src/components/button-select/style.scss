@@ -1,0 +1,23 @@
+.btn-select-container {
+  width: fit-content;
+  .btn-select {
+    --text-color: #000000;
+    --border-radius: 0.625rem;
+    --border-color: #c1c1c180;
+    --background-color: #f7f8fa;
+    font-size: 0.875rem;
+
+    &.btn-select-active {
+      --background-color: #fff;
+    }
+  }
+}
+
+.btn-select-popup {
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  min-height: 40vh;
+  padding: 1.125rem 1.5625rem;
+  .popup-title {
+  }
+}

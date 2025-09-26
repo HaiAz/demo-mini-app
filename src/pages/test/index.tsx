@@ -3,6 +3,7 @@ import DataPackageCard from "components/data-package-card";
 import "./styles.scss";
 import PaymentCard from "components/payment-card";
 import Title from "components/title";
+import ButtonSelect from "components/button-select";
 
 const Test = () => {
   return (
@@ -11,6 +12,11 @@ const Test = () => {
         titleName="Gói độc quyền"
         showAll={true}
         linkShowAll="/package-detail"
+      />
+      <ButtonSelect
+        buttonSelectName="Giá"
+        isActiveButtonSelect={true}
+        popupTitle="Chọn khoảng giá"
       />
       <DataPackageCard
         packageName="5G29"
