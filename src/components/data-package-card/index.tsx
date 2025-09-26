@@ -4,6 +4,7 @@ import CardHeader from "./card-header";
 import FeatureList from "./feature-list";
 import { IDataPackageCard } from "./types";
 import SocialList from "./social-list";
+import Button from "components/button";
 
 const DataPackageCard = ({
   packageName,
@@ -37,9 +38,9 @@ const DataPackageCard = ({
 
       <div className="card-footer">
         <SocialList socialIcons={socialIcons} />
-        <button className="buy-btn" onClick={onClick}>
+        <Button onClick={onClick} className="buy-btn">
           Mua gói cước
-        </button>
+        </Button>
       </div>
     </div>
   );

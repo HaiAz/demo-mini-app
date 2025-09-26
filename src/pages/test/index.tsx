@@ -2,6 +2,7 @@ import DataPackageCard from "components/data-package-card";
 
 import "./styles.scss";
 import PaymentCard from "components/payment-card";
+import Button from "components/button";
 import Title from "components/title";
 import ButtonSelect from "components/button-select";
 
@@ -41,8 +42,6 @@ const Test = () => {
         isPromo
         promoText="Khuyên dùng"
       />
-
-      <PaymentCard />
     </div>
   );
 };

@@ -1,0 +1,42 @@
+@import "styles/variables/colors";
+
+.payment-container {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid #ee0033;
+  }
+
+  .brand-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    row-gap: 4px;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+
+    .brand-name {
+      font-style: normal;
+      font-size: 16px;
+      font-weight: 600;
+      color: #44494d;
+      line-height: 24px;
+    }
+
+    .brand-discount {
+      color: #44494d;
+    }
+
+    .brand-voucher {
+      color: $red;
+    }
+  }
+}

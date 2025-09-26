@@ -1,0 +1,72 @@
+@import "styles/variables/colors";
+
+.btn-container {
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+
+  // Cải thiện touch experience trên mobile
+  -webkit-tap-highlight-color: transparent; // Loại bỏ highlight mặc định của webkit
+  touch-action: manipulation; // Cải thiện touch response
+  user-select: none; // Ngăn text selection khi long press
+}
+
+.btn {
+  transition: all 0.15s ease; // Smooth transition cho mọi thay đổi
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &--solid {
+    background-color: $red;
+    border: 1px solid $red; // Thêm border để transition mượt mà hơn
+    font-weight: 700;
+    font-size: 10px;
+    color: #ffffff;
+
+    // Mobile touch effect - chuyển thành outlined khi press
+    &:active {
+      background-color: #ffffff;
+      border: 1px solid $red;
+      color: $red;
+    }
+
+    // // Hover effect cho desktop
+    // @media (hover: hover) and (pointer: fine) {
+    //   &:hover {
+    //     background-color: darken($red, 5%);
+    //     border-color: darken($red, 5%);
+    //   }
+    // }
+  }
+
+  &--outlined {
+    background-color: #ffffff;
+    border: 1px solid $red;
+    font-weight: 700;
+    font-size: 10px;
+    color: $red;
+  }
+
+  &--small {
+    padding: 10px 0;
+    line-height: 7px;
+  }
+
+  &--medium {
+    padding: 10px 0;
+    line-height: 9px;
+    font-size: 10.82px;
+  }
+
+  &--large {
+    padding: 10px 0;
+    line-height: 11px;
+  }
+}
