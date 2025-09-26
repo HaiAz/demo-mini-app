@@ -19,7 +19,16 @@ export default function Header() {
         borderBottom: "1px solid red",
       }}
     >
-      <span style={{ fontSize: 18, fontWeight: 700 }}>{title}</span>
+      <span
+        style={{
+          display: "block",
+          fontSize: 18,
+          fontWeight: 700,
+          paddingTop: 15,
+        }}
+      >
+        {title}
+      </span>
     </NavBar>
   );
 }

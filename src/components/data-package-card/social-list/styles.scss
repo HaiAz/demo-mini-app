@@ -1,0 +1,10 @@
+.social {
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  margin-bottom: 7px;
+
+  .social-item:first-child {
+    margin-left: 11px;
+  }
+}

@@ -1,0 +1,46 @@
+@import "styles/variables/colors";
+
+.suggest {
+  &--primary {
+    .suggest-item {
+      display: inline-block;
+      padding: 2px 5px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      font-size: 10px;
+    }
+  }
+
+  &--secondary {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 10;
+
+    .suggest-item {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      display: inline-block;
+      width: 27px;
+      height: 27px;
+      border-radius: 1000px;
+      font-size: 3px;
+      padding: 0px 10px;
+      text-align: center;
+    }
+  }
+
+  .suggest-item {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .hot {
+    background-color: $red;
+  }
+
+  .promo {
+    background-color: #707070;
+  }
+}

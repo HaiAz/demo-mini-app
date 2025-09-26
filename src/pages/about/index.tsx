@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Modal } from "antd-mobile";
 
 import PackageDetails from "./package-details";
@@ -5,6 +6,8 @@ import PackageSummaryCard from "./package-summary-card";
 import "./styles.scss";
 
 export default function About() {
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       <h1 className="title">Chi tiết gói cước</h1>
@@ -32,15 +35,16 @@ export default function About() {
 
       <button
         className="register-btn"
-        onClick={() => {
-          Modal.alert({
-            title: "Cảm ơn quý khách",
-            content: "Bạn đã đăng ký thành công gói SD120!!!",
-            closeOnMaskClick: true,
-            bodyClassName: "success-modal",
-            confirmText: "Đóng",
-          });
-        }}
+        onClick={() => navigate("/test")}
+        // onClick={() => {
+        //   Modal.alert({
+        //     title: "Cảm ơn quý khách",
+        //     content: "Bạn đã đăng ký thành công gói SD120!!!",
+        //     closeOnMaskClick: true,
+        //     bodyClassName: "success-modal",
+        //     confirmText: "Đóng",
+        //   });
+        // }}
       >
         Đăng ký
       </button>

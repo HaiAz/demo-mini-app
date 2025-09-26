@@ -1,0 +1,37 @@
+@import "styles/variables/colors";
+
+.card-header {
+  font-weight: 700;
+
+  &--primary {
+    line-height: 12px;
+
+    .package-name {
+      font-size: 16px;
+      color: #000000;
+      margin-bottom: 7px;
+    }
+
+    .package-price {
+      font-size: 13px;
+      color: $red;
+      margin-bottom: 14px;
+    }
+  }
+
+  &--secondary {
+    line-height: 18px;
+
+    .package-name {
+      font-size: 18px;
+      color: #000000;
+      margin-bottom: 9px;
+    }
+
+    .package-price {
+      font-size: 28px;
+      margin-bottom: 16px;
+      color: $red;
+    }
+  }
+}
