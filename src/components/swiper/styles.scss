@@ -1,0 +1,19 @@
+.scaleContent {
+  height: 120px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  user-select: none;
+}
+
+.root {
+  .adm-swiper-track {
+    .adm-swiper-track-inner {
+      .adm-swiper-slide {
+        margin-right: 0.375rem;
+      }
+    }
+  }
+}
