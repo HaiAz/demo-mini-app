@@ -6,9 +6,16 @@
     --border-color: #c1c1c180;
     --background-color: #f7f8fa;
     font-size: 0.875rem;
+    padding: 0.375rem 0.625rem;
 
     &.btn-select-active {
       --background-color: #fff;
+    }
+
+    > span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
     }
   }
 }
