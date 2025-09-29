@@ -1,0 +1,50 @@
+@import "styles/variables/colors";
+
+.label {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
+  margin-bottom: 0.6875rem;
+
+  .tag {
+    display: flex;
+    align-items: center; // Căn giữa theo chiều dọc
+    justify-content: center; // Căn giữa theo chiều ngang
+    border-radius: 0.625rem;
+    padding: 0.125rem 0.3125rem;
+
+    &--exclusive {
+      background-color: $red;
+    }
+
+    &--hot {
+      background-color: $red;
+    }
+
+    &--favourite {
+      background-color: #ff6b8a;
+    }
+
+    &--suggest {
+      background-color: #000000;
+    }
+
+    span {
+      font-weight: 700;
+      font-size: 0.625rem;
+      color: #ffffff;
+    }
+  }
+
+  .view {
+    display: none;
+    font-weight: 400;
+    font-size: 0.5625rem;
+    line-height: 1.25rem;
+    color: #a1a1a1;
+  }
+
+  .show-view {
+    display: block;
+  }
+}
