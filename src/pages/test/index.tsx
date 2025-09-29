@@ -3,11 +3,53 @@ import Title from "components/title";
 import DataPackageCardV2 from "components/data-package-card-v2";
 import SearchInput from "components/search-input";
 import ButtonSelect from "components/button-select";
-import { FILTER_DATA, TAB_DATA } from "mocks";
-import { Swiper, Tabs } from "antd-mobile";
+import {
+  FILTER_DATA,
+  filterPackagesByTab,
+  groupPackagesByCategory,
+  mapFilterFn,
+  MOCK_DATA_PACKAGES,
+  TAB_DATA,
+} from "mocks";
+import { Empty, Swiper, Tabs } from "antd-mobile";
 import SwiperCustom from "components/swiper";
+import { useState } from "react";
 
 const Test = () => {
+  const [packages, setPackages] = useState(MOCK_DATA_PACKAGES);
+  const [filterValue, setFilterValue] = useState<
+    { id: number; values: number[] }[]
+  >([]);
+  const applyAllFilters = (allFilters: { id: number; values: number[] }[]) => {
+    let data = [...MOCK_DATA_PACKAGES];
+
+    allFilters.forEach(({ id, values }) => {
+      if (values.length > 0) {
+        data = mapFilterFn[id](data, values);
+      }
+    });
+
+    return data;
+  };
+
+  const handleFilter = (id: number, values: (string | number)[]) => {
+    const mapFilterValue = values.map((item) => Number(item));
+
+    const idx = filterValue.findIndex((item) => item.id === id);
+    let newFilterValue = [...filterValue];
+
+    if (idx === -1) {
+      newFilterValue.push({ id, values: mapFilterValue });
+    } else {
+      newFilterValue[idx].values = mapFilterValue;
+    }
+
+    setFilterValue(newFilterValue);
+
+    const filteredPackages = applyAllFilters(newFilterValue);
+    setPackages(filteredPackages);
+  };
+
   return (
     <div className="test-container">
       <div className="filter-wrapper">
@@ -21,7 +63,9 @@ const Test = () => {
                 buttonConfirmName={item.buttonConfirmName}
                 popupTitle={item.popupTitle}
                 listOption={item.listOption}
-                buttonConfirmFn={item.handleConfirm}
+                buttonConfirmFn={(values: (string | number)[]) =>
+                  handleFilter(item.id, values)
+                }
               />
             ))}
         </div>
@@ -32,43 +76,72 @@ const Test = () => {
           activeLineMode="full"
         >
           {TAB_DATA &&
-            TAB_DATA.map((item) => (
-              <Tabs.Tab title={item.title} key={item.id}>
-                <Title
-                  titleName="Gói độc quyền"
-                  showAll={true}
-                  linkShowAll="/package-detail"
-                />
-                <SwiperCustom>
-                  <Swiper.Item>
-                    <DataPackageCardV2
-                      packageName="5G10MYT"
-                      features={[
-                        "4GB Data / ngày",
-                        "2000p nội mạng , 10000p ngoại mạng",
-                        "Miễn phí truy cập TV360",
-                      ]}
-                      discount="2.200.000"
-                      price="1.620.000"
-                      expired="360"
-                    />
-                  </Swiper.Item>
-                  <Swiper.Item>
-                    <DataPackageCardV2
-                      packageName="5G10MYT"
-                      features={[
-                        "4GB Data / ngày",
-                        "2000p nội mạng , 10000p ngoại mạng",
-                        "Miễn phí truy cập TV360",
-                      ]}
-                      discount="2.200.000"
-                      price="1.620.000"
-                      expired="360"
-                    />
-                  </Swiper.Item>
-                </SwiperCustom>
-              </Tabs.Tab>
-            ))}
+            TAB_DATA.map((tab) => {
+              const filteredData = filterPackagesByTab(packages, tab.id);
+
+              return (
+                <Tabs.Tab title={tab.title} key={tab.id}>
+                  {tab.id === 1 ? (
+                    groupPackagesByCategory(packages).map((group) =>
+                      group.data.length > 0 ? (
+                        <div key={group.title}>
+                          <Title
+                            titleName={group.title}
+                            showAll={true}
+                            linkShowAll="/package-detail"
+                          />
+                          <SwiperCustom>
+                            {group.data.map((pkg) => (
+                              <Swiper.Item key={pkg.id}>
+                                <DataPackageCardV2
+                                  packageName={pkg.packageName}
+                                  features={pkg.features}
+                                  discount={pkg.discount}
+                                  price={pkg.price}
+                                  expired={pkg.expired}
+                                />
+                              </Swiper.Item>
+                            ))}
+                          </SwiperCustom>
+                        </div>
+                      ) : (
+                        <div className="empty-state">
+                          <Empty
+                            imageStyle={{ width: 64 }}
+                            description="Không có gói cước nào"
+                          />
+                        </div>
+                      )
+                    )
+                  ) : (
+                    <>
+                      <Title titleName={tab.title} showAll={false} />
+                      {filteredData.length > 0 ? (
+                        <div className="list-package">
+                          {filteredData.map((pkg) => (
+                            <DataPackageCardV2
+                              key={pkg.id}
+                              packageName={pkg.packageName}
+                              features={pkg.features}
+                              discount={pkg.discount}
+                              price={pkg.price}
+                              expired={pkg.expired}
+                            />
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="empty-state">
+                          <Empty
+                            imageStyle={{ width: 64 }}
+                            description="Không có gói cước nào"
+                          />
+                        </div>
+                      )}
+                    </>
+                  )}
+                </Tabs.Tab>
+              );
+            })}
         </Tabs>
       </div>
     </div>

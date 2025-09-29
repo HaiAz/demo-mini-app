@@ -64,16 +64,16 @@ export const FILTER_DATA = [
       console.log(this.buttonSelectName, values);
     },
   },
-  {
-    id: 5,
-    buttonSelectName: "Tiện ích",
-    popupTitle: "Chọn tiện ích",
-    buttonConfirmName: "Xác nhận",
-    listOption: [{ label: "Mạng xã hội", value: 1 }],
-    handleConfirm: function (values: (string | number)[]) {
-      console.log(this.buttonSelectName, values);
-    },
-  },
+  // {
+  //   id: 5,
+  //   buttonSelectName: "Tiện ích",
+  //   popupTitle: "Chọn tiện ích",
+  //   buttonConfirmName: "Xác nhận",
+  //   listOption: [{ label: "Mạng xã hội", value: 1 }],
+  //   handleConfirm: function (values: (string | number)[]) {
+  //     console.log(this.buttonSelectName, values);
+  //   },
+  // },
 ];
 
 export const TAB_DATA = [
@@ -395,4 +395,39 @@ export const filterPackagesByTab = (
     default:
       return packages;
   }
+};
+
+type FilterFn = (
+  packages: DataPackage[],
+  filterValue: number[]
+) => DataPackage[];
+
+export const mapFilterFn: Record<number, FilterFn> = {
+  1: filterPackagesByPrice,
+  2: filterPackagesByData,
+  3: filterPackagesByCycle,
+  4: filterPackagesByPromotion,
+  5: filterPackagesByUtility,
+};
+
+// helper
+export const groupPackagesByCategory = (packages: DataPackage[]) => {
+  return [
+    {
+      title: "Gói độc quyền",
+      data: packages.filter((p) => p.isExclusive === true),
+    },
+    {
+      title: "Gói cước 5G",
+      data: packages.filter((p) => p.category === "5G"),
+    },
+    {
+      title: "Gói mạng xã hội",
+      data: packages.filter((p) => p.category === "MXH"),
+    },
+    {
+      title: "Gói ưu đãi thoại, DATA",
+      data: packages.filter((p) => p.category === "thoại"),
+    },
+  ];
 };

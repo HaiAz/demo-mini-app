@@ -12,6 +12,8 @@
   .show-all {
     align-items: center;
     gap: 0.25rem;
+    user-select: none;
+    cursor: pointer;
     display: none;
 
     &.is-show-all {

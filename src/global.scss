@@ -23,3 +23,50 @@ body,
 #root {
   background: #fff;
 }
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+:root {
+  --scrollbar-thumb: #cfcfcf;
+  --scrollbar-thumb-hover: #a8a8a8;
+  --scrollbar-track: transparent;
+  --scrollbar-size: 10px;
+  --scrollbar-radius: 999px;
+}
+
+/* ---- Chromium-based browsers (Edge/Chrome/Opera) ---- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: var(--scrollbar-radius);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: var(--scrollbar-radius);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Thumb hover / active */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* Optional: ẩn khi không dùng (mượt hơn) - cho Chromium */
+:root {
+  scrollbar-gutter: stable; /* tránh layout shift khi xuất hiện scrollbar */
+}
+
+/* ---- Firefox ---- */
+/* Firefox dùng thuộc tính riêng */
+.custom-scrollbar {
+  scrollbar-width: thin; /* auto | thin | none */
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
