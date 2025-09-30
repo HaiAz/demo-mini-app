@@ -1,7 +1,12 @@
+import Header from "components/header";
 import "./styles.scss";
 
 const Payment = () => {
-  return <div>Payment</div>;
+  return (
+    <div className="payment-container">
+      <Header />
+    </div>
+  );
 };
 
 export default Payment;

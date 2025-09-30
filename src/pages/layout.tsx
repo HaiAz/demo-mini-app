@@ -8,7 +8,6 @@ export default function MainLayout() {
       {/* <div style={{ background: "#ace0ff" }}>
         <SafeArea position="top" />
       </div> */}
-      <Header />
 
       {/* Content */}
       {/* <div className="main-content"> */}

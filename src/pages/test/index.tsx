@@ -14,6 +14,8 @@ import {
 import { Empty, Swiper, Tabs } from "antd-mobile";
 import SwiperCustom from "components/swiper";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "components/header";
 
 const Test = () => {
   const [packages, setPackages] = useState(MOCK_DATA_PACKAGES);
@@ -21,6 +23,7 @@ const Test = () => {
   const [filterValue, setFilterValue] = useState<
     { id: number; values: number[] }[]
   >([]);
+  const navigate = useNavigate();
   const applyAllFilters = (allFilters: { id: number; values: number[] }[]) => {
     let data = [...MOCK_DATA_PACKAGES];
 
@@ -53,111 +56,113 @@ const Test = () => {
 
   return (
     <div className="test-container">
-      <div className="filter-wrapper">
-        <SearchInput />
-        <div className="filter">
-          {FILTER_DATA &&
-            FILTER_DATA.map((item) => (
-              <ButtonSelect
-                key={item.id}
-                buttonSelectName={item.buttonSelectName}
-                buttonConfirmName={item.buttonConfirmName}
-                popupTitle={item.popupTitle}
-                listOption={item.listOption}
-                buttonConfirmFn={(values: (string | number)[]) =>
-                  handleFilter(item.id, values)
-                }
-              />
-            ))}
-        </div>
-        <Tabs
-          className="tab-package"
-          activeKey={activeKey}
-          direction="ltr"
-          activeLineMode="full"
-          onChange={(key) => setActiveKey(key)}
-        >
-          {CATEGORIES_TAB_DATA &&
-            CATEGORIES_TAB_DATA.map((tab) => {
-              const filteredData = filterPackagesByTab(packages, tab.id);
+      <Header />
 
-              return (
-                <Tabs.Tab title={tab.tabTitle} key={tab.id}>
-                  {tab.id === 1 ? (
-                    (() => {
-                      const grouped = groupPackagesByCategory(packages);
-                      const nonEmptyGroups = grouped.filter(
-                        (group) => group.data.length > 0
-                      );
+      <SearchInput />
+      <div className="filter">
+        {FILTER_DATA &&
+          FILTER_DATA.map((item) => (
+            <ButtonSelect
+              key={item.id}
+              buttonSelectName={item.buttonSelectName}
+              buttonConfirmName={item.buttonConfirmName}
+              popupTitle={item.popupTitle}
+              listOption={item.listOption}
+              buttonConfirmFn={(values: (string | number)[]) =>
+                handleFilter(item.id, values)
+              }
+            />
+          ))}
+      </div>
+      <Tabs
+        className="tab-package"
+        activeKey={activeKey}
+        direction="ltr"
+        activeLineMode="full"
+        onChange={(key) => setActiveKey(key)}
+      >
+        {CATEGORIES_TAB_DATA &&
+          CATEGORIES_TAB_DATA.map((tab) => {
+            const filteredData = filterPackagesByTab(packages, tab.id);
 
-                      if (nonEmptyGroups.length === 0) {
-                        return (
-                          <div className="empty-state">
-                            <Empty
-                              imageStyle={{ width: 64 }}
-                              description="Không có gói cước nào"
-                            />
-                          </div>
-                        );
-                      }
+            return (
+              <Tabs.Tab title={tab.tabTitle} key={tab.id}>
+                {tab.id === 1 ? (
+                  (() => {
+                    const grouped = groupPackagesByCategory(packages);
+                    const nonEmptyGroups = grouped.filter(
+                      (group) => group.data.length > 0
+                    );
 
-                      return nonEmptyGroups.map((group) => (
-                        <div key={group.title}>
-                          <Title
-                            titleName={group.title}
-                            showAll={true}
-                            activeTab={`${group.tabKey}`}
-                            handleClickShowAll={(activeTab) => {
-                              setActiveKey(activeTab);
-                            }}
-                          />
-                          <SwiperCustom>
-                            {group.data.map((pkg) => (
-                              <Swiper.Item key={pkg.id}>
-                                <DataPackageCardV2
-                                  packageName={pkg.packageName}
-                                  features={pkg.features}
-                                  originPrice={pkg.originPrice}
-                                  price={pkg.price}
-                                  expired={pkg.expired}
-                                />
-                              </Swiper.Item>
-                            ))}
-                          </SwiperCustom>
-                        </div>
-                      ));
-                    })()
-                  ) : (
-                    <>
-                      <Title titleName={tab.tabTitle} showAll={false} />
-                      {filteredData.length > 0 ? (
-                        <div className="list-package">
-                          {filteredData.map((pkg) => (
-                            <DataPackageCardV2
-                              key={pkg.id}
-                              packageName={pkg.packageName}
-                              features={pkg.features}
-                              originPrice={pkg.originPrice}
-                              price={pkg.price}
-                              expired={pkg.expired}
-                            />
-                          ))}
-                        </div>
-                      ) : (
+                    if (nonEmptyGroups.length === 0) {
+                      return (
                         <div className="empty-state">
                           <Empty
                             imageStyle={{ width: 64 }}
                             description="Không có gói cước nào"
                           />
                         </div>
-                      )}
-                    </>
-                  )}
-                </Tabs.Tab>
-              );
-            })}
-        </Tabs>
-      </div>
+                      );
+                    }
+
+                    return nonEmptyGroups.map((group) => (
+                      <div key={group.title}>
+                        <Title
+                          titleName={group.title}
+                          showAll={true}
+                          activeTab={`${group.tabKey}`}
+                          handleClickShowAll={(activeTab) => {
+                            setActiveKey(activeTab);
+                          }}
+                        />
+                        <SwiperCustom>
+                          {group.data.map((pkg) => (
+                            <Swiper.Item key={pkg.id}>
+                              <DataPackageCardV2
+                                packageName={pkg.packageName}
+                                features={pkg.features}
+                                originPrice={pkg.originPrice}
+                                price={pkg.price}
+                                expired={pkg.expired}
+                                onClick={() => navigate("/payment")}
+                              />
+                            </Swiper.Item>
+                          ))}
+                        </SwiperCustom>
+                      </div>
+                    ));
+                  })()
+                ) : (
+                  <>
+                    <Title titleName={tab.tabTitle} showAll={false} />
+                    {filteredData.length > 0 ? (
+                      <div className="list-package">
+                        {filteredData.map((pkg) => (
+                          <DataPackageCardV2
+                            key={pkg.id}
+                            packageName={pkg.packageName}
+                            features={pkg.features}
+                            originPrice={pkg.originPrice}
+                            price={pkg.price}
+                            expired={pkg.expired}
+                            onClick={() => navigate("/payment")}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="empty-state">
+                        <Empty
+                          imageStyle={{ width: 64 }}
+                          description="Không có gói cước nào"
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
+              </Tabs.Tab>
+            );
+          })}
+      </Tabs>
     </div>
   );
 };

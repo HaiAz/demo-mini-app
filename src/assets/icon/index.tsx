@@ -66,6 +66,30 @@ export const IconYoutube = ({ width = "22", height = "22" }: IIconProps) => (
   </svg>
 );
 
+export const LeftArrowIcon = ({ width = "22", height = "22" }: IIconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g clipPath="url(#clip0_4226_251)">
+      <path
+        d="M15.8291 10.8096L11.3945 15.2451H22.416V16.7451H11.3945L15.8291 21.1807L14.7686 22.2412L8.52246 15.9961V15.9951L14.7686 9.74902L15.8291 10.8096Z"
+        fill="black"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_4226_251">
+        <path
+          d="M0 8C0 3.58172 3.58172 0 8 0H24C28.4183 0 32 3.58172 32 8V24C32 28.4183 28.4183 32 24 32H8C3.58172 32 0 28.4183 0 24V8Z"
+          fill="white"
+        />
+      </clipPath>
+    </defs>
+  </svg>
+);
 export const IconSpotify = ({ width = "22", height = "22" }: IIconProps) => (
   <svg
     width={width}
