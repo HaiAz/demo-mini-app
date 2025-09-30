@@ -9,7 +9,7 @@ import {
   groupPackagesByCategory,
   mapFilterFn,
   MOCK_DATA_PACKAGES,
-  TAB_DATA,
+  CATEGORIES_TAB_DATA,
 } from "mocks";
 import { Empty, Swiper, Tabs } from "antd-mobile";
 import SwiperCustom from "components/swiper";
@@ -77,12 +77,12 @@ const Test = () => {
           activeLineMode="full"
           onChange={(key) => setActiveKey(key)}
         >
-          {TAB_DATA &&
-            TAB_DATA.map((tab) => {
+          {CATEGORIES_TAB_DATA &&
+            CATEGORIES_TAB_DATA.map((tab) => {
               const filteredData = filterPackagesByTab(packages, tab.id);
 
               return (
-                <Tabs.Tab title={tab.title} key={tab.id}>
+                <Tabs.Tab title={tab.tabTitle} key={tab.id}>
                   {tab.id === 1 ? (
                     (() => {
                       const grouped = groupPackagesByCategory(packages);
@@ -117,7 +117,7 @@ const Test = () => {
                                 <DataPackageCardV2
                                   packageName={pkg.packageName}
                                   features={pkg.features}
-                                  discount={pkg.discount}
+                                  originPrice={pkg.originPrice}
                                   price={pkg.price}
                                   expired={pkg.expired}
                                 />
@@ -129,7 +129,7 @@ const Test = () => {
                     })()
                   ) : (
                     <>
-                      <Title titleName={tab.title} showAll={false} />
+                      <Title titleName={tab.tabTitle} showAll={false} />
                       {filteredData.length > 0 ? (
                         <div className="list-package">
                           {filteredData.map((pkg) => (
@@ -137,7 +137,7 @@ const Test = () => {
                               key={pkg.id}
                               packageName={pkg.packageName}
                               features={pkg.features}
-                              discount={pkg.discount}
+                              originPrice={pkg.originPrice}
                               price={pkg.price}
                               expired={pkg.expired}
                             />

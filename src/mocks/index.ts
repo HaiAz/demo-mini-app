@@ -1,3 +1,5 @@
+import { TagVariantType } from "types/tag-variant";
+
 export const FILTER_DATA = [
   {
     id: 1,
@@ -11,9 +13,6 @@ export const FILTER_DATA = [
       { label: "100k - 500K", value: 4 },
       { label: ">500k", value: 5 },
     ],
-    handleConfirm: function (values: (string | number)[]) {
-      console.log(this.buttonSelectName, values);
-    },
   },
   {
     id: 2,
@@ -28,9 +27,6 @@ export const FILTER_DATA = [
       { label: "6GB - 8GB", value: 5 },
       { label: ">8GB", value: 6 },
     ],
-    handleConfirm: function (values: (string | number)[]) {
-      console.log(this.buttonSelectName, values);
-    },
   },
   {
     id: 3,
@@ -46,9 +42,6 @@ export const FILTER_DATA = [
       { label: "180 ngày", value: 6 },
       { label: "360 ngày", value: 7 },
     ],
-    handleConfirm: function (values: (string | number)[]) {
-      console.log(this.buttonSelectName, values);
-    },
   },
   {
     id: 4,
@@ -60,63 +53,48 @@ export const FILTER_DATA = [
       { label: "DATA", value: 2 },
       { label: "SMS", value: 3 },
     ],
-    handleConfirm: function (values: (string | number)[]) {
-      console.log(this.buttonSelectName, values);
-    },
   },
-  // {
-  //   id: 5,
-  //   buttonSelectName: "Tiện ích",
-  //   popupTitle: "Chọn tiện ích",
-  //   buttonConfirmName: "Xác nhận",
-  //   listOption: [{ label: "Mạng xã hội", value: 1 }],
-  //   handleConfirm: function (values: (string | number)[]) {
-  //     console.log(this.buttonSelectName, values);
-  //   },
-  // },
 ];
 
-export const TAB_DATA = [
+export const CATEGORIES_TAB_DATA = [
   {
     id: 1,
-    title: "Tất cả",
+    tabTitle: "Tất cả",
   },
   {
     id: 2,
-    title: "Độc quyền",
+    tabTitle: "Độc quyền",
   },
   {
     id: 3,
-    title: "Gói 5G",
+    tabTitle: "Gói 5G",
   },
   {
     id: 4,
-    title: "Gói MXH",
+    tabTitle: "Gói MXH",
   },
   {
     id: 5,
-    title: "Gói thoại",
+    tabTitle: "Gói thoại",
   },
 ];
 
-export const MOCK_DATA_PACKAGES: DataPackage[] = [
+export const MOCK_DATA_PACKAGES: IPackage[] = [
   {
     id: 1,
     packageName: "Gói DATA Khủng",
     view: 1250,
     features: ["10GB data", "Miễn phí Facebook", "Miễn phí YouTube"],
     price: "120000",
-    discount: "90000",
+    originPrice: "90000",
     expired: "30",
-    variantTag: "exclusive" as const,
+    variantTag: "exclusive" as TagVariantType,
     // Filter matching fields
     priceRange: 4, // 100k - 500K
     dataAmount: 6, // >8GB (10GB)
     cycle: 4, // 30 ngày
     promotion: [1, 2], // Thoại, DATA
-    utility: [1], // Mạng xã hội
-    category: "5G",
-    isExclusive: true,
+    category: [2, 3],
   },
   {
     id: 2,
@@ -124,17 +102,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 890,
     features: ["300 phút gọi", "2GB data", "100 SMS miễn phí"],
     price: "80000",
-    discount: "65000",
+    originPrice: "65000",
     expired: "30",
-    variantTag: "popular" as const,
+    variantTag: "hot" as TagVariantType,
     // Filter matching fields
     priceRange: 3, // 50K - 100K
     dataAmount: 3, // 2GB - 4GB
     cycle: 4, // 30 ngày
     promotion: [1, 3], // Thoại, SMS
-    utility: [],
-    category: "thoại",
-    isExclusive: false,
+    category: [5],
   },
   {
     id: 3,
@@ -142,17 +118,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 2100,
     features: ["5GB data", "Free Facebook", "Free TikTok", "Free Instagram"],
     price: "45000",
-    discount: "35000",
+    originPrice: "35000",
     expired: "30",
-    variantTag: "hot" as const,
+    variantTag: "hot" as TagVariantType,
     // Filter matching fields
     priceRange: 2, // 10K - 50K
     dataAmount: 4, // 4GB - 6GB (5GB)
     cycle: 4, // 30 ngày
     promotion: [2], // DATA
-    utility: [1], // Mạng xã hội
-    category: "MXH",
-    isExclusive: false,
+    category: [4],
   },
   {
     id: 4,
@@ -160,17 +134,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 750,
     features: ["20GB data 5G", "Unlimited YouTube", "200 phút gọi"],
     price: "350000",
-    discount: "280000",
+    originPrice: "280000",
     expired: "90",
-    variantTag: "new" as const,
+    variantTag: "exclusive" as TagVariantType,
     // Filter matching fields
     priceRange: 4, // 100K - 500K
     dataAmount: 6, // >8GB (20GB)
     cycle: 5, // 90 ngày
     promotion: [1, 2], // Thoại, DATA
-    utility: [1], // Mạng xã hội
-    category: "5G",
-    isExclusive: true,
+    category: [2, 3],
   },
   {
     id: 5,
@@ -178,17 +150,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 450,
     features: ["1.5GB data", "50 phút gọi"],
     price: "25000",
-    discount: "20000",
+    originPrice: "20000",
     expired: "7",
-    variantTag: "basic" as const,
+    variantTag: "suggest" as TagVariantType,
     // Filter matching fields
     priceRange: 2, // 10K - 50K
     dataAmount: 2, // 1GB - 2GB
     cycle: 3, // 7 ngày
     promotion: [1, 2], // Thoại, DATA
-    utility: [],
-    category: "basic",
-    isExclusive: false,
+    category: [3],
   },
   {
     id: 6,
@@ -196,17 +166,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 320,
     features: ["3GB data", "Free Zalo"],
     price: "15000",
-    discount: "12000",
+    originPrice: "12000",
     expired: "3",
-    variantTag: "weekend" as const,
+    variantTag: "suggest" as TagVariantType,
     // Filter matching fields
     priceRange: 2, // 10K - 50K
     dataAmount: 3, // 2GB - 4GB (3GB)
     cycle: 2, // 3 ngày
     promotion: [2], // DATA
-    utility: [1], // Mạng xã hội
-    category: "weekend",
-    isExclusive: false,
+    category: [4],
   },
   {
     id: 7,
@@ -214,17 +182,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 680,
     features: ["500 phút gọi", "8GB data", "200 SMS"],
     price: "180000",
-    discount: "150000",
+    originPrice: "150000",
     expired: "30",
-    variantTag: "business" as const,
+    variantTag: "hot" as TagVariantType,
     // Filter matching fields
     priceRange: 4, // 100K - 500K
     dataAmount: 5, // 6GB - 8GB (8GB)
     cycle: 4, // 30 ngày
     promotion: [1, 2, 3], // Thoại, DATA, SMS
-    utility: [],
-    category: "thoại",
-    isExclusive: false,
+    category: [2],
   },
   {
     id: 8,
@@ -232,17 +198,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 1850,
     features: ["50GB data", "Unlimited social", "Free Netflix 1 tháng"],
     price: "600000",
-    discount: "480000",
+    originPrice: "480000",
     expired: "180",
-    variantTag: "premium" as const,
+    variantTag: "exclusive" as TagVariantType,
     // Filter matching fields
     priceRange: 5, // >500K
     dataAmount: 6, // >8GB (50GB)
     cycle: 6, // 180 ngày
     promotion: [2], // DATA
-    utility: [1], // Mạng xã hội
-    category: "premium",
-    isExclusive: true,
+    category: [2, 5],
   },
   {
     id: 9,
@@ -250,17 +214,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 1200,
     features: ["4GB data", "Free Facebook", "100 SMS"],
     price: "35000",
-    discount: "28000",
+    originPrice: "28000",
     expired: "30",
-    variantTag: "student" as const,
+    variantTag: "favorite" as TagVariantType,
     // Filter matching fields
     priceRange: 2, // 10K - 50K
     dataAmount: 4, // 4GB - 6GB (4GB)
     cycle: 4, // 30 ngày
     promotion: [2, 3], // DATA, SMS
-    utility: [1], // Mạng xã hội
-    category: "MXH",
-    isExclusive: false,
+    category: [4],
   },
   {
     id: 10,
@@ -268,17 +230,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 180,
     features: ["500MB data", "20 phút gọi"],
     price: "8000",
-    discount: "6000",
+    originPrice: "6000",
     expired: "1",
-    variantTag: "daily" as const,
+    variantTag: "favorite" as TagVariantType,
     // Filter matching fields
     priceRange: 1, // <10K
     dataAmount: 1, // <1GB
     cycle: 1, // 1 ngày
     promotion: [1, 2], // Thoại, DATA
-    utility: [],
-    category: "daily",
-    isExclusive: false,
+    category: [3],
   },
   {
     id: 11,
@@ -286,17 +246,15 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 2800,
     features: ["30GB data 5G", "Unlimited call", "Free all social apps"],
     price: "450000",
-    discount: "360000",
+    originPrice: "360000",
     expired: "90",
-    variantTag: "exclusive" as const,
+    variantTag: "exclusive" as TagVariantType,
     // Filter matching fields
     priceRange: 4, // 100K - 500K
     dataAmount: 6, // >8GB (30GB)
     cycle: 5, // 90 ngày
     promotion: [1, 2], // Thoại, DATA
-    utility: [1], // Mạng xã hội
-    category: "5G",
-    isExclusive: true,
+    category: [2, 3],
   },
   {
     id: 12,
@@ -304,134 +262,130 @@ export const MOCK_DATA_PACKAGES: DataPackage[] = [
     view: 95,
     features: ["500 SMS", "1GB data"],
     price: "20000",
-    discount: "15000",
+    originPrice: "15000",
     expired: "30",
-    variantTag: "sms" as const,
+    variantTag: "hot" as TagVariantType,
     // Filter matching fields
     priceRange: 2, // 10K - 50K
     dataAmount: 2, // 1GB - 2GB (1GB)
     cycle: 4, // 30 ngày
     promotion: [2, 3], // DATA, SMS
-    utility: [],
-    category: "sms",
-    isExclusive: false,
+    category: [5],
   },
 ];
 
 // Define types for better type safety
-export interface DataPackage {
+export interface IPackage {
   id: number;
-  packageName: string;
-  view: number;
-  features: string[];
-  price: string;
-  discount: string;
-  expired: string;
-  variantTag: string;
-  priceRange: number;
-  dataAmount: number;
-  cycle: number;
-  promotion: number[];
-  utility: number[];
-  category: string;
-  isExclusive: boolean;
+  packageName: string; // Tên gói
+  view: number; // lượt xem
+  features: string[]; // tiện ích
+  price: string; // giá
+  originPrice: string; // giá gốc
+  expired: string; // chu kỳ
+  variantTag: TagVariantType; // loại tag "hot" | "suggest" | "favorite" | "exclusive"
+  priceRange: number; // id khoảng giá > filter
+  dataAmount: number; // id dung lượng > filter
+  cycle: number; // id chu kỳ > filter
+  promotion: number[]; // id ưu đãi > filter
+  category: number[]; // id danh mục
+}
+
+export interface ICategory {
+  id: number;
+  title: string; // Tiêu đề cho danh sách gói
+  tabTitle: string; // Tiêu đề tab
+}
+
+export interface IFilter {
+  priceRanges: { label: string; value: number }[]; // khoảng giá
+  dataAmounts: { label: string; value: number }[]; // dung lượng
+  cycle: { label: string; value: number }[]; // chu kỳ
+  promotion: { label: string; value: number }[]; // ưu đãi
 }
 
 // Helper functions để filter data
 export const filterPackagesByPrice = (
-  packages: DataPackage[],
+  packages: IPackage[],
   priceRanges: number[]
-): DataPackage[] => {
+): IPackage[] => {
   return packages.filter((pkg) => priceRanges.includes(pkg.priceRange));
 };
 
 export const filterPackagesByData = (
-  packages: DataPackage[],
+  packages: IPackage[],
   dataRanges: number[]
-): DataPackage[] => {
+): IPackage[] => {
   return packages.filter((pkg) => dataRanges.includes(pkg.dataAmount));
 };
 
 export const filterPackagesByCycle = (
-  packages: DataPackage[],
+  packages: IPackage[],
   cycles: number[]
-): DataPackage[] => {
+): IPackage[] => {
   return packages.filter((pkg) => cycles.includes(pkg.cycle));
 };
 
 export const filterPackagesByPromotion = (
-  packages: DataPackage[],
+  packages: IPackage[],
   promotions: number[]
-): DataPackage[] => {
+): IPackage[] => {
   return packages.filter((pkg) =>
     promotions.some((promo: number) => pkg.promotion.includes(promo))
   );
 };
 
-export const filterPackagesByUtility = (
-  packages: DataPackage[],
-  utilities: number[]
-): DataPackage[] => {
-  return packages.filter((pkg) =>
-    utilities.some((utility: number) => pkg.utility.includes(utility))
-  );
-};
-
 export const filterPackagesByTab = (
-  packages: DataPackage[],
+  packages: IPackage[],
   tabId: number
-): DataPackage[] => {
+): IPackage[] => {
   switch (tabId) {
     case 1: // Tất cả
       return packages;
     case 2: // Độc quyền
-      return packages.filter((pkg) => pkg.isExclusive);
+      return packages.filter((pkg) => pkg.category.includes(2));
     case 3: // Gói 5G
-      return packages.filter((pkg) => pkg.category === "5G");
+      return packages.filter((pkg) => pkg.category.includes(3));
     case 4: // Gói MXH
-      return packages.filter((pkg) => pkg.category === "MXH");
+      return packages.filter((pkg) => pkg.category.includes(4));
     case 5: // Gói thoại
-      return packages.filter((pkg) => pkg.category === "thoại");
+      return packages.filter((pkg) => pkg.category.includes(5));
     default:
       return packages;
   }
 };
 
-type FilterFn = (
-  packages: DataPackage[],
-  filterValue: number[]
-) => DataPackage[];
+type FilterFn = (packages: IPackage[], filterValue: number[]) => IPackage[];
 
 export const mapFilterFn: Record<number, FilterFn> = {
   1: filterPackagesByPrice,
   2: filterPackagesByData,
   3: filterPackagesByCycle,
   4: filterPackagesByPromotion,
-  5: filterPackagesByUtility,
 };
 
 // helper
-export const groupPackagesByCategory = (packages: DataPackage[]) => {
+export const groupPackagesByCategory = (packages: IPackage[]) => {
   return [
     {
       tabKey: 2,
       title: "Gói độc quyền",
-      data: packages.filter((p) => p.isExclusive === true),
+      data: packages.filter((p) => p.category.includes(2)),
     },
     {
       tabKey: 3,
       title: "Gói cước 5G",
-      data: packages.filter((p) => p.category === "5G"),
+      data: packages.filter((p) => p.category.includes(3)),
     },
     {
       tabKey: 4,
       title: "Gói mạng xã hội",
-      data: packages.filter((p) => p.category === "MXH"),
+      data: packages.filter((p) => p.category.includes(4)),
     },
     {
       tabKey: 5,
       title: "Gói ưu đãi thoại, DATA",
-      data: packages.filter((p) => p.category === "thoại"),
+      data: packages.filter((p) => p.category.includes(5)),
     },
   ];
 };

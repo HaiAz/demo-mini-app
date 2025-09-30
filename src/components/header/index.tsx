@@ -15,20 +15,8 @@ export default function Header() {
       className="header"
       backIcon={isHome ? null : <LeftOutline className="icon" />}
       onBack={() => navigate(-1)}
-      style={{
-        borderBottom: "1px solid red",
-      }}
     >
-      <span
-        style={{
-          display: "block",
-          fontSize: 18,
-          fontWeight: 700,
-          paddingTop: 15,
-        }}
-      >
-        {title}
-      </span>
+      <span className="title">{title}</span>
     </NavBar>
   );
 }

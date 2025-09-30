@@ -3,6 +3,7 @@ import "./styles.scss";
 import DataPackageTag from "components/tag";
 import { TagVariantType } from "types/tag-variant";
 import FeatureList from "./feature-list";
+import { formatVND } from "utils/format";
 
 interface IDataPackageCardV2Props {
   packageName: string;
@@ -10,7 +11,7 @@ interface IDataPackageCardV2Props {
   features?: string[];
   price?: string;
   expired?: string;
-  discount?: string;
+  originPrice?: string;
   variantTag?: TagVariantType;
   onClick?: () => void;
 }
@@ -21,7 +22,7 @@ const DataPackageCardV2 = ({
   features = [],
   price,
   view,
-  discount,
+  originPrice,
   variantTag,
   onClick = () => {},
 }: IDataPackageCardV2Props) => {
@@ -34,8 +35,12 @@ const DataPackageCardV2 = ({
       </div>
       <span className="dashed"></span>
       <div className="content-right">
-        <p className="package-discount">{discount}đ</p>
-        <p className="package-price">{price}đ</p>
+        <p className="package-origin-price">
+          {formatVND(Number(originPrice), { space: false })}
+        </p>
+        <p className="package-price">
+          {formatVND(Number(price), { space: false })}
+        </p>
         <p className="package-expire">{expired} ngày</p>
         <Button onClick={onClick} size="small" className="buy-btn">
           Mua ngay

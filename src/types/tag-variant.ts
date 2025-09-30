@@ -1,1 +1,1 @@
-export type TagVariantType = "hot" | "suggest" | "favourite" | "exclusive";
+export type TagVariantType = "hot" | "suggest" | "favorite" | "exclusive";

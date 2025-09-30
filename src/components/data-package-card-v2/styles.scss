@@ -11,7 +11,8 @@
   height: auto;
   padding: 9px 17px 9px 13px;
   border-radius: 0.625rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0.25rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 
   .content-left {
     flex: 1;
@@ -37,7 +38,7 @@
     padding-left: 1.25rem;
     font-weight: 700;
 
-    .package-discount {
+    .package-origin-price {
       font-size: 0.75rem;
       line-height: 0.75rem;
       color: #7e7e7e;

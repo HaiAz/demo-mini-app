@@ -15,7 +15,7 @@ const DataPackageTag = ({
   const contentTag = {
     exclusive: "ĐỘC QUYỀN",
     hot: "HOT",
-    favourite: "YÊU THÍCH",
+    favorite: "YÊU THÍCH",
     suggest: "KHUYÊN DÙNG",
   };
   return (
