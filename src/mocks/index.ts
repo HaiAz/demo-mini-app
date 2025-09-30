@@ -414,18 +414,22 @@ export const mapFilterFn: Record<number, FilterFn> = {
 export const groupPackagesByCategory = (packages: DataPackage[]) => {
   return [
     {
+      tabKey: 2,
       title: "Gói độc quyền",
       data: packages.filter((p) => p.isExclusive === true),
     },
     {
+      tabKey: 3,
       title: "Gói cước 5G",
       data: packages.filter((p) => p.category === "5G"),
     },
     {
+      tabKey: 4,
       title: "Gói mạng xã hội",
       data: packages.filter((p) => p.category === "MXH"),
     },
     {
+      tabKey: 5,
       title: "Gói ưu đãi thoại, DATA",
       data: packages.filter((p) => p.category === "thoại"),
     },

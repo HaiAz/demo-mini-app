@@ -17,6 +17,7 @@ import { useState } from "react";
 
 const Test = () => {
   const [packages, setPackages] = useState(MOCK_DATA_PACKAGES);
+  const [activeKey, setActiveKey] = useState("1");
   const [filterValue, setFilterValue] = useState<
     { id: number; values: number[] }[]
   >([]);
@@ -71,9 +72,10 @@ const Test = () => {
         </div>
         <Tabs
           className="tab-package"
-          defaultActiveKey="1"
+          activeKey={activeKey}
           direction="ltr"
           activeLineMode="full"
+          onChange={(key) => setActiveKey(key)}
         >
           {TAB_DATA &&
             TAB_DATA.map((tab) => {
@@ -88,7 +90,10 @@ const Test = () => {
                           <Title
                             titleName={group.title}
                             showAll={true}
-                            linkShowAll="/package-detail"
+                            activeTab={`${group.tabKey}`}
+                            handleClickShowAll={(activeTab) => {
+                              setActiveKey(activeTab);
+                            }}
                           />
                           <SwiperCustom>
                             {group.data.map((pkg) => (
