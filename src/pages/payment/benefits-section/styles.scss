@@ -1,0 +1,40 @@
+.benefits-section {
+  background-color: #ffffff;
+  padding: 1rem 0.5rem 1rem 1rem;
+  border-radius: 0.75rem;
+
+  .benefits-section__title {
+    font-weight: 600;
+    color: #202939;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .benefits-section__description {
+    color: #4b5565;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .benefits-section__list {
+    list-style: none;
+
+    .benefits-section__item {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.1875rem;
+      font-size: 0.875rem;
+      color: #4b5565;
+      font-weight: 400;
+
+      &::before {
+        content: "•";
+        position: absolute;
+        left: 6px;
+        color: #4b5565;
+        font-weight: bold;
+      }
+    }
+  }
+}
