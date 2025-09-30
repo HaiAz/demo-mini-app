@@ -84,8 +84,24 @@ const Test = () => {
               return (
                 <Tabs.Tab title={tab.title} key={tab.id}>
                   {tab.id === 1 ? (
-                    groupPackagesByCategory(packages).map((group) =>
-                      group.data.length > 0 ? (
+                    (() => {
+                      const grouped = groupPackagesByCategory(packages);
+                      const nonEmptyGroups = grouped.filter(
+                        (group) => group.data.length > 0
+                      );
+
+                      if (nonEmptyGroups.length === 0) {
+                        return (
+                          <div className="empty-state">
+                            <Empty
+                              imageStyle={{ width: 64 }}
+                              description="Không có gói cước nào"
+                            />
+                          </div>
+                        );
+                      }
+
+                      return nonEmptyGroups.map((group) => (
                         <div key={group.title}>
                           <Title
                             titleName={group.title}
@@ -109,15 +125,8 @@ const Test = () => {
                             ))}
                           </SwiperCustom>
                         </div>
-                      ) : (
-                        <div className="empty-state">
-                          <Empty
-                            imageStyle={{ width: 64 }}
-                            description="Không có gói cước nào"
-                          />
-                        </div>
-                      )
-                    )
+                      ));
+                    })()
                   ) : (
                     <>
                       <Title titleName={tab.title} showAll={false} />
