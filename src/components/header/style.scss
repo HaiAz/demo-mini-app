@@ -22,6 +22,7 @@
   .adm-nav-bar-left {
     display: flex;
     align-items: center;
+    flex: 0;
 
     .adm-nav-bar-back {
       padding: unset;
@@ -33,5 +34,10 @@
         margin: 0;
       }
     }
+  }
+
+  .adm-nav-bar-title {
+    text-align: left;
+    padding: 0;
   }
 }
