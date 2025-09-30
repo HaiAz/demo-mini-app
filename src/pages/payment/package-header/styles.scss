@@ -1,0 +1,44 @@
+@import "styles/variables/colors";
+
+.package-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+
+  .package-header__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    .package-header__name {
+      font-weight: 600;
+      color: #202939;
+      font-size: 1rem;
+    }
+
+    .package-header__price {
+      font-weight: 500;
+      color: $red;
+      font-size: 0.875rem;
+    }
+  }
+
+  .package-header__duration {
+    display: flex;
+    align-items: center;
+    column-gap: 0.25rem;
+
+    .package-header__icon {
+      display: flex;
+    }
+
+    .package-header__duration-text {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: #4b5565;
+    }
+  }
+}
