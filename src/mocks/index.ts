@@ -5,7 +5,7 @@ export const FILTER_DATA = [
     id: 1,
     buttonSelectName: "Giá",
     popupTitle: "Chọn khoảng giá",
-    buttonConfirmName: "Xác nhận",
+    buttonConfirmName: "Áp dụng",
     listOption: [
       { label: "<10K", value: 1 },
       { label: "10K - 50K", value: 2 },
@@ -16,9 +16,9 @@ export const FILTER_DATA = [
   },
   {
     id: 2,
-    buttonSelectName: "DATA",
-    popupTitle: "Chọn mức DATA",
-    buttonConfirmName: "Xác nhận",
+    buttonSelectName: "Data",
+    popupTitle: "Chọn mức Data",
+    buttonConfirmName: "Áp dụng",
     listOption: [
       { label: "< 1GB", value: 1 },
       { label: "1GB - 2GB", value: 2 },
@@ -32,7 +32,7 @@ export const FILTER_DATA = [
     id: 3,
     buttonSelectName: "Chu kỳ",
     popupTitle: "Chọn loại chu kỳ",
-    buttonConfirmName: "Xác nhận",
+    buttonConfirmName: "Áp dụng",
     listOption: [
       { label: "1 ngày", value: 1 },
       { label: "3 ngày", value: 2 },
@@ -47,7 +47,7 @@ export const FILTER_DATA = [
     id: 4,
     buttonSelectName: "Ưu đãi",
     popupTitle: "Chọn loại ưu đãi",
-    buttonConfirmName: "Xác nhận",
+    buttonConfirmName: "Áp dụng",
     listOption: [
       { label: "Thoại", value: 1 },
       { label: "DATA", value: 2 },
