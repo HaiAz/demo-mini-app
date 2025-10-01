@@ -5,6 +5,8 @@ import BenefitsSection from "./benefits-section";
 import CheckoutFooter from "./checkout-footer";
 import Cycle from "./cycle";
 import PaymentMethod, { PaymentMethodData } from "./paymentMethod";
+import ApplyDateSelector from "./apply-date-selector";
+import { useState } from "react";
 
 const Payment = () => {
   const methods: PaymentMethodData[] = [
@@ -28,6 +30,12 @@ const Payment = () => {
   const handleSelectBilling = (id: number) => {
     console.log("Đã chọn phương thức đóng cước:", id)
   }
+  const [value, setValue] = useState(1);
+  console.log("🚀 ~ Payment ~ value:", value);
+
+  const handleSetValue = (value: number) => {
+    setValue(value);
+  };
   return (
     <div className="payment-container">
       <header>
@@ -44,6 +52,9 @@ const Payment = () => {
           ]}
           description="Ưu đãi dùng trong mỗi chu kỳ 30 ngày"
         />
+
+        <ApplyDateSelector onChange={handleSetValue} />
+
         <Cycle />
         {/* phương thưc thanh toán */}
         <PaymentMethod
