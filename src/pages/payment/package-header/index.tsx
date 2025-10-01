@@ -6,11 +6,12 @@ interface IPackageProps {
   packageName?: string;
   price?: number;
   duration?: string;
+  className?:string
 }
 
-const PackageHeader = ({ duration, packageName, price = 0 }: IPackageProps) => {
+const PackageHeader = ({ duration, packageName, price = 0,className }: IPackageProps) => {
   return (
-    <div className="package-header">
+    <div className={`package-header ${className}`}>
       <div className="package-header__info">
         <h2 className="package-header__name">Gói {packageName}</h2>
         <h3 className="package-header__price">

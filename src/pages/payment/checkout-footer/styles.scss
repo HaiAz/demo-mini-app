@@ -44,4 +44,30 @@
       border-color: transparent;
     }
   }
+
+  .modalPayment {
+    margin-top: 2rem;
+
+    &-confirmation{
+      font-size: 1rem;
+      font-weight: 400;
+      color: #4B5565;
+      margin-bottom: 1rem;
+      p{
+        display: inline;
+        font-weight: 600;
+      }
+    }
+    &-footer{
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      justify-content: end;
+      &-btn {
+        width: fit-content;
+        padding: .75rem 1.5625rem;
+      }
+    }
+    
+  }
 }
