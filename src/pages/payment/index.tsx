@@ -1,11 +1,11 @@
 import Header from "components/header";
-import PackageHeader from "./package-header";
+import PackageHeader from "./components/package-header";
 import "./styles.scss";
-import BenefitsSection from "./benefits-section";
-import CheckoutFooter from "./checkout-footer";
-import Cycle from "./cycle";
-import PaymentMethod, { PaymentMethodData } from "./paymentMethod";
-import ApplyDateSelector from "./apply-date-selector";
+import BenefitsSection from "./components/benefits-section";
+import CheckoutFooter from "./components/checkout-footer";
+import Cycle from "./components/cycle";
+import PaymentMethod, { PaymentMethodData } from "./components/paymentMethod";
+import ApplyDateSelector from "./components/apply-date-selector";
 import { useState } from "react";
 
 const Payment = () => {
@@ -14,24 +14,23 @@ const Payment = () => {
       id: 1,
       title: "Đăng ký qua tài khoản chính điện thoại",
       sub: "Tài khoản chính: ",
-      subDes: 2500000
-    }
-  ]
+      subDes: 2500000,
+    },
+  ];
   const handleSelectMethod = (id: number) => {
-    console.log("Đã chọn phương thức thanh toán:", id)
-  }
+    console.log("Đã chọn phương thức thanh toán:", id);
+  };
 
-  const billing: PaymentMethodData[] =[
+  const billing: PaymentMethodData[] = [
     {
       id: 1,
       title: "Đóng cước sau",
-    }
-  ]
+    },
+  ];
   const handleSelectBilling = (id: number) => {
-    console.log("Đã chọn phương thức đóng cước:", id)
-  }
+    console.log("Đã chọn phương thức đóng cước:", id);
+  };
   const [value, setValue] = useState(1);
-  console.log("🚀 ~ Payment ~ value:", value);
 
   const handleSetValue = (value: number) => {
     setValue(value);
@@ -61,13 +60,13 @@ const Payment = () => {
           data={methods}
           onSelect={handleSelectMethod}
           title="Chọn phương thức thanh toán"
-           />
+        />
         {/* phương thức đóng cước */}
         <PaymentMethod
           data={billing}
           onSelect={handleSelectBilling}
           title="Chọn phương thức đóng cước"
-           />
+        />
       </main>
       <footer>
         <CheckoutFooter />
