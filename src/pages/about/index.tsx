@@ -35,7 +35,7 @@ export default function About() {
 
       <button
         className="register-btn"
-        onClick={() => navigate("/test")}
+        onClick={() => navigate("/packages")}
         // onClick={() => {
         //   Modal.alert({
         //     title: "Cảm ơn quý khách",

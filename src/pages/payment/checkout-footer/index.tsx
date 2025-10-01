@@ -10,25 +10,50 @@ import PaymentWaring from "../payment-waring";
 const CheckoutFooter = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const [showModalStatus, setShowModalStatus] = useState(false)
+  const [showModalStatus, setShowModalStatus] = useState(false);
 
   const packageHeader = () => {
     return (
       <div>
-        <PaymentWaring newNamePackage="5G160B" pricePackage={160000} oldNamePackage="5G90" />
-        <PackageHeader duration="30" packageName="5G160B" price={160000} className="background-package-header" />
+        <PaymentWaring
+          newNamePackage="5G160B"
+          pricePackage={160000}
+          oldNamePackage="5G90"
+        />
+        <PackageHeader
+          duration="30"
+          packageName="5G160B"
+          price={160000}
+          className="background-package-header"
+        />
         <div className="modalPayment">
           <div className="modalPayment-confirmation">
             Quý khách có xác nhận đăng ký gói cước <p>{"5G160B"}</p> không?
           </div>
           <div className="modalPayment-footer">
-            <Button onClick={() => setShowModal(false)} className="modalPayment-footer-btn" size="small" variant="outlined">Hủy</Button>
-            <Button onClick={() => { setShowModalStatus(true); setShowModal(false) }} className="modalPayment-footer-btn" size="small">Xác nhận</Button>
+            <Button
+              onClick={() => setShowModal(false)}
+              className="modalPayment-footer-btn"
+              size="small"
+              variant="outlined"
+            >
+              Hủy
+            </Button>
+            <Button
+              onClick={() => {
+                setShowModalStatus(true);
+                setShowModal(false);
+              }}
+              className="modalPayment-footer-btn"
+              size="small"
+            >
+              Xác nhận
+            </Button>
           </div>
         </div>
       </div>
-    )
-  }
+    );
+  };
   return (
     <div className="checkout-footer">
       <div className="total-section">
@@ -46,7 +71,7 @@ const CheckoutFooter = () => {
           Đăng ký ngay
         </Button>
         <Button
-          onClick={() => navigate("/test")}
+          onClick={() => navigate("/packages")}
           className="back-btn"
           variant="outlined"
           size="large"

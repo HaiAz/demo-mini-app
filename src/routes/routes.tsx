@@ -1,7 +1,7 @@
 import About from "pages/about";
+import Packages from "pages/packages";
 import Payment from "pages/payment";
 import Profile from "pages/profile";
-import Test from "pages/test";
 
 const routes = [
   {
@@ -13,8 +13,8 @@ const routes = [
     element: Profile,
   },
   {
-    path: "/test",
-    element: Test,
+    path: "/packages",
+    element: Packages,
   },
   {
     path: "/payment",
@@ -26,7 +26,7 @@ const titleMap: Record<string, string> = {
   "/": "Danh sách gói cước",
   "/package-detail": "Chi tiết gói cước",
   "/profile": "Profile",
-  "/test": "Test giao diện",
+  "/packages": "Danh sách gói cước",
   "/payment": "Thanh toán",
 };
 

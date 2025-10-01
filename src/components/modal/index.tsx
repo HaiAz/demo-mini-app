@@ -57,7 +57,12 @@ const Modal = ({
           )}
         </div>
 
-        <CustomButton onClick={() => onModalClose()} variant="outlined">
+        <CustomButton
+          onClick={() => onModalClose()}
+          variant="outlined"
+          fullWidth={false}
+          className="btn-close-modal"
+        >
           Đóng
         </CustomButton>
       </div>
