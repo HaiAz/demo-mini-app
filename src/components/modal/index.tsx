@@ -57,7 +57,7 @@ const Modal = ({
           )}
         </div>
 
-        <CustomButton onClick={() => onModalClose} variant="outlined">
+        <CustomButton onClick={() => onModalClose()} variant="outlined">
           Đóng
         </CustomButton>
       </div>

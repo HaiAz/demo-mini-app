@@ -10,22 +10,21 @@
   padding: 8px;
   cursor: pointer;
 
-  // Cải thiện touch experience trên mobile
   -webkit-tap-highlight-color: transparent; // Loại bỏ highlight mặc định của webkit
   touch-action: manipulation; // Cải thiện touch response
   user-select: none; // Ngăn text selection khi long press
 }
 
 .btn {
-  transition: all 0.15s ease; // Smooth transition cho mọi thay đổi
+  transition: all 0.15s ease;
 
   &--full-width {
     width: 100%;
   }
 
   &--solid {
-    background-color: $red;
-    border: 1px solid $red; // Thêm border để transition mượt mà hơn
+    background-color: #202939;
+    border: 1px solid #cdd5df;
     font-weight: 700;
     font-size: 10px;
     color: #ffffff;
@@ -33,25 +32,17 @@
     // Mobile touch effect - chuyển thành outlined khi press
     &:active {
       background-color: #ffffff;
-      border: 1px solid $red;
-      color: $red;
+      border: 1px solid #364152;
+      color: #202939;
     }
-
-    // // Hover effect cho desktop
-    // @media (hover: hover) and (pointer: fine) {
-    //   &:hover {
-    //     background-color: darken($red, 5%);
-    //     border-color: darken($red, 5%);
-    //   }
-    // }
   }
 
   &--outlined {
     background-color: #ffffff;
-    border: 1px solid $red;
+    border: 1px solid #364152;
     font-weight: 700;
     font-size: 10px;
-    color: $red;
+    color: #202939;
   }
 
   &--small {
