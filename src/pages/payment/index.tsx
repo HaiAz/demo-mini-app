@@ -4,9 +4,30 @@ import "./styles.scss";
 import BenefitsSection from "./benefits-section";
 import CheckoutFooter from "./checkout-footer";
 import Cycle from "./cycle";
-import PaymentMethod from "./paymentMethod";
+import PaymentMethod, { PaymentMethodData } from "./paymentMethod";
 
 const Payment = () => {
+  const methods: PaymentMethodData[] = [
+    {
+      id: 1,
+      title: "Đăng ký qua tài khoản chính điện thoại",
+      sub: "Tài khoản chính: ",
+      subDes: 2500000
+    }
+  ]
+  const handleSelectMethod = (id: number) => {
+    console.log("Đã chọn phương thức thanh toán:", id)
+  }
+
+  const billing: PaymentMethodData[] =[
+    {
+      id: 1,
+      title: "Đóng cước sau",
+    }
+  ]
+  const handleSelectBilling = (id: number) => {
+    console.log("Đã chọn phương thức đóng cước:", id)
+  }
   return (
     <div className="payment-container">
       <header>
@@ -24,7 +45,18 @@ const Payment = () => {
           description="Ưu đãi dùng trong mỗi chu kỳ 30 ngày"
         />
         <Cycle />
-        <PaymentMethod />
+        {/* phương thưc thanh toán */}
+        <PaymentMethod
+          data={methods}
+          onSelect={handleSelectMethod}
+          title="Chọn phương thức thanh toán"
+           />
+        {/* phương thức đóng cước */}
+        <PaymentMethod
+          data={billing}
+          onSelect={handleSelectBilling}
+          title="Chọn phương thức đóng cước"
+           />
       </main>
       <footer>
         <CheckoutFooter />

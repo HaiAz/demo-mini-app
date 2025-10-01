@@ -1,43 +1,41 @@
 import { Checkbox } from "antd-mobile"
 import Title from "components/title"
 import './style.scss'
+import { formatVND } from "utils/format";
 
-type PaymentMethodData = {
+export type PaymentMethodData = {
   id: number,
   title: string,
-  sub: string,
-
+  sub?: string,
+  subDes?: number;
 }
-const PaymentMethod = () => {
-  const data: PaymentMethodData[] = [
-    {
-      id:1,
-      title: "Đăng ký qua tài khoản chính điện thoại",
-      sub: "Tài khoản chính: "
-    },
-  ]
-  const formatCurrency = (value: number): string => {
-    return new Intl.NumberFormat("vi-VN").format(value);
-  };
+type PaymentMethodProps = {
+  data: PaymentMethodData[]; // nhận props từ cha
+  onSelect: (id: number) => void; //nhận thêm hàm từ cha 
+  title: string
+};
+const PaymentMethod = ({ data, onSelect,title }: PaymentMethodProps) => {
   return (
     <div className="PaymentMethod">
       <Title
-        titleName="Chọn phương thức thanh toán"
+        titleName={title}
         showAll={false} />
       <div className="PaymentMethod-list">
         {data.map((item, index) => (
-          <div className="PaymentMethod-item">
-            <li key={item.id} className="PaymentMethod-option-item">
+          <div className="PaymentMethod-item" key={index} >
+            <li className="PaymentMethod-option-item">
               <Checkbox
-                checked={true}
-                onChange={()=>{}}
+                checked={index === 0}
+                onChange={() => {onSelect(item.id)}}
               >
                 <div>
                   <p>{item.title}</p>
                   <span>
-                    {item.sub}
-                    <strong>{formatCurrency(2500000)}đ</strong> 
-                   </span>
+                    {item.sub && <div>{item.sub}</div>}
+                    {item.subDes && (
+                      <strong>{formatVND(item.subDes)}</strong>
+                    )}
+                  </span>
                 </div>
               </Checkbox>
             </li>
