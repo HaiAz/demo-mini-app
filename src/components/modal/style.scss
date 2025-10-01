@@ -1,0 +1,63 @@
+.modal-custom {
+  --max-width: 400px;
+  --min-width: 90%;
+  --border-radius: 1.25rem;
+
+  @mixin text-title {
+    color: #202939;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  .adm-center-popup-wrap {
+    .adm-center-popup-close {
+      color: #44494d;
+      right: 0.75rem;
+    }
+
+    .adm-modal-body {
+      .adm-modal-title {
+        @include text-title;
+        padding: 0 1rem;
+        margin: 0.5rem 0;
+      }
+      .adm-modal-content {
+        padding: 0 1rem 0.75rem;
+
+        .content-modal {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+          text-align: center;
+
+          .icon {
+            padding-top: 0.75rem;
+          }
+
+          .content-modal-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            .content-title {
+              @include text-title;
+
+              .content-title-sub {
+                font-weight: 400;
+                font-size: 1rem;
+                line-height: 120%;
+                color: #4b5565;
+                b {
+                  font-weight: 500;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

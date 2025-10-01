@@ -2,9 +2,12 @@ import { formatVND } from "utils/format";
 import "./styles.scss";
 import Button from "components/button";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Modal from "components/modal";
 
 const CheckoutFooter = () => {
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="checkout-footer">
@@ -15,7 +18,7 @@ const CheckoutFooter = () => {
       <div className="action-btns">
         <Button
           onClick={() => {
-            console.log("click");
+            setShowModal(true);
           }}
           className="register-btn"
           size="large"
@@ -31,6 +34,21 @@ const CheckoutFooter = () => {
           Chọn gói khác
         </Button>
       </div>
+
+      <Modal
+        isModalOpen={showModal}
+        onModalClose={() => setShowModal(false)}
+        content={"5G160B"}
+        isSuccess={false}
+        isShowTitle={false}
+      />
+
+      {/* <Modal
+        isModalOpen={showModal}
+        onModalClose={() => setShowModal(false)}
+        title="Xác nhận đăng ký gói cước"
+        content={"5G160B"}
+      /> */}
     </div>
   );
 };
