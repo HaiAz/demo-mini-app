@@ -1,0 +1,37 @@
+.Cycle {
+  padding: 0px 16px 16px 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  .Cycle-list {
+    display: flex;
+    align-items: center;
+    gap: 5px ;
+    flex-wrap: wrap;
+    .Cycle-item{
+      width: 49%;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 5px 15px;
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #E3E8EF;
+      p{
+        display: block;
+        padding-bottom: 4px;
+        color:#4B5565;
+      }
+      span{
+        font-size: 14px;
+        font-weight: 600;
+        color:#202939;
+      }
+    }
+    .active{
+      border: 0.5px solid #EE0033;
+    }
+  }
+}
