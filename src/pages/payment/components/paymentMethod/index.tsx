@@ -31,7 +31,7 @@ const PaymentMethod = ({ data, onSelect,title }: PaymentMethodProps) => {
                 <div>
                   <p>{item.title}</p>
                   <span>
-                    {item.sub && <div>{item.sub}</div>}
+                    {item.sub && item.sub}
                     {item.subDes && (
                       <strong>{formatVND(item.subDes)}</strong>
                     )}

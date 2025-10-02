@@ -1,0 +1,41 @@
+.search-page {
+  padding: 1rem;
+
+  .search-suggest {
+    margin-top: 1rem;
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        padding: 0.5rem 0;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .search-empty {
+    text-align: center;
+    padding: 2rem;
+    color: #697586;
+  }
+
+  .search-results {
+    margin-top: 1rem;
+    .result-group {
+      margin-bottom: 1rem;
+      .group-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+      .pkg-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem;
+        background: #fff;
+        border-radius: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

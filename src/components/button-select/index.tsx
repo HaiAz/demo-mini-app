@@ -43,7 +43,10 @@ const ButtonSelect = (props: ButtonSelectProps) => {
         }`}
         onClick={openPopup}
       >
-        {props.buttonSelectName} <DownIcon />
+        {checkedValues.length > 0
+          ? props.listOption.find((x) => x.value === checkedValues[0])?.label
+          : props.buttonSelectName}{" "}
+        <DownIcon />
       </Button>
 
       <Popup
@@ -66,7 +69,18 @@ const ButtonSelect = (props: ButtonSelectProps) => {
           ))}
         </ul>
 
-        <CustomBtn onClick={handleConfirm}>{props.buttonConfirmName}</CustomBtn>
+        <div className="group-btn">
+          <CustomBtn
+            onClick={() => setVisible(false)}
+            variant="outlined"
+            className="group-btn-item"
+          >
+            Hủy
+          </CustomBtn>
+          <CustomBtn onClick={handleConfirm} className="group-btn-item">
+            {props.buttonConfirmName}
+          </CustomBtn>
+        </div>
       </Popup>
     </div>
   );
