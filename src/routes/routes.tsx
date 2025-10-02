@@ -1,3 +1,4 @@
+import Search from "pages/search";
 import { lazy } from "react";
 
 const Packages = lazy(() => import("pages/packages"));
@@ -9,6 +10,10 @@ const routes = [
     element: <Packages />,
   },
   {
+    path: "/search",
+    element: <Search />,
+  },
+  {
     path: "/payment",
     element: <Payment />,
   },
@@ -17,6 +22,7 @@ const routes = [
 const titleMap: Record<string, string> = {
   "/": "Danh sách gói cước",
   "/packages": "Danh sách gói cước",
+  "/search": "Tìm kiếm",
   "/payment": "Thanh toán",
 };
 

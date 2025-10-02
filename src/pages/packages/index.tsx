@@ -61,7 +61,10 @@ const Packages = () => {
       </header>
 
       <main className="package-container">
-        <SearchInput />
+        <SearchInput placeholder="Tìm kiếm tiện ích" />
+        {/* <button onClick={() => navigate("/search")}>
+          Navigate Search Page
+        </button> */}
         <div className="filter">
           {FILTER_DATA &&
             FILTER_DATA.map((item) => (
