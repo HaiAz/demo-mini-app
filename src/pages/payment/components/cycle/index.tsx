@@ -34,12 +34,38 @@ const Cycle = () => {
   ]
   const [selectCycle, setSelectCycle] = useState<number>(360)
 
+
   const handChangCycle = (value: number) => {
     setSelectCycle(value)
+    test()
   }
   const formatCurrency = (value: number): string => {
     return new Intl.NumberFormat("vi-VN").format(value);
   };
+
+  const test = () => {
+    // const params = {
+    //   key: 'key',
+    //   value: 'value'
+    // };
+
+    // window.WindVane.call('WVStorage', 'setItem', params, 
+    // function (e: any) {
+    //   console.log("success: " + JSON.stringify(e))
+    // }, 
+    // function (e: any) {
+    //   console.log('failure: ' + JSON.stringify(e));
+    // });
+    const params = {
+      key: 'key',
+      // value: 'value'
+    };
+    window.WindVane.call('WVStorage', 'getItem', params, function(e:any) {
+      console.log('success: ' + typeof(e.data));
+    }, function(e:any) {
+      console.log('failure: ' + JSON.stringify(e));
+    });
+  }
   return (
     <div>
       <div className='Cycle'>

@@ -12,6 +12,7 @@
             user-select: none;
             &.adm-checkbox-checked {
               .adm-checkbox-icon {
+                border-color: #ee0033;
                 &::after {
                   content: "";
                   top: 51%;
@@ -30,7 +31,7 @@
             }
             &-icon {
               position: relative;
-              border-color: #ee0033;
+              // border-color: #ee0033;
               background-color: transparent;
               border-radius: 50%;
               height: 1.0625rem;

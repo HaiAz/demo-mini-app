@@ -2,6 +2,7 @@ import { Checkbox } from "antd-mobile"
 import Title from "components/title"
 import './style.scss'
 import { formatVND } from "utils/format";
+import { useState } from "react";
 
 export type PaymentMethodData = {
   id: number,
@@ -15,6 +16,11 @@ type PaymentMethodProps = {
   title: string
 };
 const PaymentMethod = ({ data, onSelect,title }: PaymentMethodProps) => {
+  const [selectedId, setSelectedId] = useState<number>(1);
+
+const handleSelect = (id: number) => {
+  setSelectedId(id);
+};
   return (
     <div className="PaymentMethod">
       <Title
@@ -25,8 +31,8 @@ const PaymentMethod = ({ data, onSelect,title }: PaymentMethodProps) => {
           <div className="PaymentMethod-item" key={index} >
             <li className="PaymentMethod-option-item">
               <Checkbox
-                checked={index === 0}
-                onChange={() => {onSelect(item.id)}}
+                checked={selectedId === item.id}
+                onChange={() => {onSelect(item.id); handleSelect(item.id)}}
               >
                 <div>
                   <p>{item.title}</p>
