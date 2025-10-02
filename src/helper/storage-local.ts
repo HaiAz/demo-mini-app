@@ -16,10 +16,8 @@ const getItem = (key: string): Promise<any> => {
       "getItem",
       params,
       (e: { data: string; ret: string }) => {
-        console.log("🚀 ~ getItem ~ e:", e);
         try {
           const value = JSON.parse(e?.data);
-          console.log("🚀 ~ getItem ~ value:", value);
           resolve(value);
         } catch {
           resolve(e.data);
@@ -52,7 +50,47 @@ const setItem = (key: string, value: any): Promise<any> => {
   });
 };
 
+const remoteItem = (key: string): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    if (!isWindVaneAvailable()) {
+      reject(new Error("Windvane not available"));
+      return;
+    }
+
+    const params = {
+      key,
+    };
+
+    window.WindVane.call(
+      "WVStorage",
+      "removeItem",
+      params,
+      (result: any) => resolve(result),
+      (error: any) => reject(error)
+    );
+  });
+};
+
+const clearStorage = (): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    if (!isWindVaneAvailable()) {
+      reject(new Error("Windvane not available"));
+      return;
+    }
+
+    window.WindVane.call(
+      "WVStorage",
+      "clearStorage",
+      {},
+      (result: any) => resolve(result),
+      (error: any) => reject(error)
+    );
+  });
+};
+
 export const storage = {
   getItem,
   setItem,
+  remoteItem,
+  clearStorage,
 };
