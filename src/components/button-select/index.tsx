@@ -73,16 +73,11 @@ const ButtonSelect = (props: ButtonSelectProps) => {
           <CustomBtn
             onClick={() => setVisible(false)}
             variant="outlined"
-            fullWidth={false}
             className="group-btn-item"
           >
             Hủy
           </CustomBtn>
-          <CustomBtn
-            onClick={handleConfirm}
-            fullWidth={false}
-            className="group-btn-item"
-          >
+          <CustomBtn onClick={handleConfirm} className="group-btn-item">
             {props.buttonConfirmName}
           </CustomBtn>
         </div>
